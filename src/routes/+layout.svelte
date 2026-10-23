@@ -281,7 +281,7 @@
 							{#each shopCategories as cat (cat.id)}
 								<li>
 									<a
-										href={l(`/shop?category=${cat.handle}`)}
+										href={l(`/category/${cat.handle}`)}
 										class="text-lg hover:opacity-70 transition-opacity"
 										onclick={() => (menuOpen = false)}
 									>
@@ -332,11 +332,20 @@
 							</li>
 							<li>
 								<a
-									href={l('/customer-care')}
+									href={l('/customer-care/shipping')}
 									class="text-lg hover:opacity-70 transition-opacity"
 									onclick={() => (menuOpen = false)}
 								>
-									{t('Shipping & Returns')}
+									{t('Shipping')}
+								</a>
+							</li>
+							<li>
+								<a
+									href={l('/customer-care/returns')}
+									class="text-lg hover:opacity-70 transition-opacity"
+									onclick={() => (menuOpen = false)}
+								>
+									{t('Returns')}
 								</a>
 							</li>
 							<li>
@@ -421,7 +430,7 @@
 						<li><a href={l('/shop')} class="hover:text-gray-900 transition-colors">{t('All Swimwear')}</a></li>
 						{#each shopCategories as cat (cat.id)}
 							<li>
-								<a href={l(`/shop?category=${cat.handle}`)} class="hover:text-gray-900 transition-colors">
+								<a href={l(`/category/${cat.handle}`)} class="hover:text-gray-900 transition-colors">
 									{cat.name}
 								</a>
 							</li>

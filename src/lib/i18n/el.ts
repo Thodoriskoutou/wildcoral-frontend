@@ -77,8 +77,6 @@ export const el: Record<string, string> = {
 	"Between sizes, or not sure? Write to us and we’ll help you choose.":
 		"Ανάμεσα σε δύο μεγέθη ή έχετε αμφιβολία; Γράψτε μας και θα σας βοηθήσουμε να επιλέξετε.",
 	"Billing address is the same as shipping": "Η διεύθυνση τιμολόγησης είναι η ίδια με τη διεύθυνση αποστολής",
-	"Body measurements in {sizeChartUnit}. Measurements are approximate.":
-		"Μετρήσεις σώματος σε {sizeChartUnit}. Οι μετρήσεις είναι ενδεικτικές.",
 	"Bought this piece?": "Αγοράσατε αυτό το προϊόν;",
 	"Breadcrumb": "Διαδρομή πλοήγησης",
 	"Bust": "Στήθος",
@@ -217,8 +215,6 @@ export const el: Record<string, string> = {
 	"Follow {handle}": "Ακολουθήστε το {handle}",
 	"For the best fit, measure yourself and compare with the chart.":
 		"Για την καλύτερη εφαρμογή, μετρηθείτε και συγκρίνετε με τον πίνακα.",
-	"For the best fit, measure yourself. If you are unsure which size to choose, write to us and we will help.":
-		"Για την καλύτερη εφαρμογή, μετρηθείτε. Αν δεν είστε βέβαιοι ποιο μέγεθος να επιλέξετε, γράψτε μας και θα σας βοηθήσουμε.",
 	"Forgot password?": "Ξεχάσατε τον κωδικό;",
 	"Forgot your password?": "Ξεχάσατε τον κωδικό σας;",
 	"Free": "Δωρεάν",
@@ -239,7 +235,6 @@ export const el: Record<string, string> = {
 	"Highest rated": "Υψηλότερη βαθμολογία",
 	"Hip": "Γοφοί",
 	"Hip (in)": "Γοφοί (in)",
-	"Hips": "Γοφοί",
 	"Hips ({sizeChartUnit})": "Γοφοί ({sizeChartUnit})",
 	"Home": "Αρχική",
 	"How do I track my order?": "Πώς μπορώ να παρακολουθήσω την παραγγελία μου;",
@@ -293,11 +288,8 @@ export const el: Record<string, string> = {
 	"Materials & Care": "Υλικά & φροντίδα",
 	"Measure around the fullest part of your bust, keeping the tape parallel to the floor":
 		"Μετρήστε γύρω από το πιο πλατύ σημείο του στήθους, κρατώντας το μέτρο παράλληλα με το δάπεδο",
-	"Measure around the fullest part of your hips": "Μετρήστε γύρω από το πιο πλατύ σημείο των γοφών",
 	"Measure around the fullest part of your hips, approximately 8\" below your waist":
 		"Μετρήστε γύρω από το πιο πλατύ σημείο των γοφών, περίπου 20 εκ. κάτω από τη μέση",
-	"Measure around your natural waistline, keeping the tape comfortably loose":
-		"Μετρήστε γύρω από τη φυσική γραμμή της μέσης, κρατώντας το μέτρο άνετα χαλαρό",
 	"Measure around your natural waistline, the narrowest part of your torso":
 		"Μετρήστε γύρω από τη φυσική γραμμή της μέσης, το στενότερο σημείο του κορμού σας",
 	"Menu": "Μενού",
@@ -326,7 +318,6 @@ export const el: Record<string, string> = {
 	"No delivery method selected": "Δεν έχει επιλεγεί τρόπος παράδοσης",
 	"No delivery options available": "Δεν υπάρχουν διαθέσιμες επιλογές παράδοσης",
 	"No pieces match your selection": "Κανένα προϊόν δεν ταιριάζει με την επιλογή σας",
-	"No products in this category yet.": "Δεν υπάρχουν ακόμη προϊόντα σε αυτή την κατηγορία.",
 	"No products in this collection yet.": "Δεν υπάρχουν ακόμη προϊόντα σε αυτή τη συλλογή.",
 	"No results for '{searchTerm}'": "Δεν βρέθηκαν αποτελέσματα για '{searchTerm}'",
 	"No results found.": "Δεν βρέθηκαν αποτελέσματα.",
@@ -533,7 +524,6 @@ export const el: Record<string, string> = {
 	"Size": "Μέγεθος",
 	"Size Guide": "Οδηγός μεγεθών",
 	"Size guide, shipping and returns": "Οδηγός μεγεθών, αποστολή και επιστροφές",
-	"Sizes": "Μεγέθη",
 	"Sizing & fit": "Μεγέθη & εφαρμογή",
 	"Sizing, shipping and returns": "Μεγέθη, αποστολή και επιστροφές",
 	"Sold Out": "Εξαντλήθηκε",

@@ -17,7 +17,7 @@ primary), so they match the rest of the site.
 | Route                | What it does                                                                                   |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | `/`                  | Home: hero, featured styles, "shop the look", new arrivals (newest Medusa products)             |
-| `/shop`              | Product grid with category filter (`/shop?category=<handle>`; menu links come from Medusa)      |
+| `/shop`              | Product grid for all products; categories use `/category/<handle>` (menu links come from Medusa) |
 | `/product/[handle]`  | Gallery, color/size options, live stock, add to cart, SEO metadata + JSON-LD                    |
 | `/search`            | Full-page search using the Store API's `q` filter (no search plugin needed)                     |
 | `/cart`              | Cart with quantity, remove and coupon codes                                                     |

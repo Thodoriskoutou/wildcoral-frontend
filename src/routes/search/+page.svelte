@@ -110,8 +110,9 @@
 				{#each searchResults as product, index (product.id)}
 					{@const patternIndex = index % 4}
 					{@const activeColorIndex = getActiveColorIndex(product)}
+					{@const nextProduct = searchResults[index + 1]}
 
-					{#if patternIndex === 0}
+					{#if patternIndex === 0 || (patternIndex === 1 && !nextProduct)}
 						<div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
 							<a
 								href={l(productHref(product, activeColorIndex))}
@@ -172,9 +173,7 @@
 							</div>
 						</div>
 					{:else if patternIndex === 1}
-						{@const nextProduct = searchResults[index + 1]}
-						{#if nextProduct}
-							<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 								{#each [product, nextProduct] as prod (prod.id)}
 									{@const prodActiveColorIndex = getActiveColorIndex(prod)}
 									<div>
@@ -222,8 +221,7 @@
 										</div>
 									</div>
 								{/each}
-							</div>
-						{/if}
+						</div>
 					{:else if patternIndex === 3}
 						<div class="max-w-2xl mx-auto">
 							<a

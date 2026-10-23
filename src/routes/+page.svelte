@@ -214,7 +214,7 @@
 	<section class="py-0">
 		<div class="grid grid-cols-1 lg:grid-cols-5">
 			<a
-				href={l('/shop?category=one-pieces')}
+				href={l('/category/one-pieces')}
 				class="lg:col-span-3 relative aspect-[4/3] lg:aspect-auto lg:min-h-[600px] bg-gray-100 border border-gray-200 group overflow-hidden"
 			>
 				<img
