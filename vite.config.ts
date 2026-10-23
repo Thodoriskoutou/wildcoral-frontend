@@ -1,7 +1,7 @@
 import tailwindcss from '@tailwindcss/vite'
 import { sveltekit } from '@sveltejs/kit/vite'
 import { defineConfig } from 'vite'
-import adapter from '@sveltejs/adapter-auto'
+import adapter from '@sveltejs/adapter-bun'
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 
 export default defineConfig({
@@ -17,7 +17,10 @@ export default defineConfig({
 				}
 			},
 			// Swap for the adapter that matches your host (node / cloudflare / vercel / …).
-			adapter: adapter(),
+			adapter: adapter({
+				out: 'build',
+				precompress: true
+			}),
 			// The SDK ships its data layer as remote functions.
 			experimental: {
 				remoteFunctions: true

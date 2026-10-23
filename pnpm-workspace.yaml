@@ -1,9 +1,0 @@
-# Settings for pnpm (this folder is a single project, not a workspace with several packages).
-
-# pnpm 11+: which dependencies may run their install scripts
-allowBuilds:
-  esbuild: true
-
-# pnpm 10.x
-onlyBuiltDependencies:
-  - esbuild
