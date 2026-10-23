@@ -1,0 +1,18 @@
+<script lang="ts">
+	import { t } from '$lib/i18n'
+	import { cn } from '$lib/utils.js'
+	import { getCheckoutContext } from './ctx.svelte.js'
+	import type { Snippet } from 'svelte'
+	let { class: className = '', children }: { class?: string; children?: Snippet } = $props()
+	const ctx = getCheckoutContext()
+</script>
+
+<button
+	type="button"
+	data-checkout-place-order
+	disabled={ctx.placing}
+	onclick={() => ctx.placeOrder()}
+	class={cn('h-10 w-full rounded-md bg-primary text-sm font-medium text-primary-foreground disabled:opacity-50', className)}
+>
+	{#if children}{@render children()}{:else}{ctx.placing ? t('Processing…') : t('Place order')}{/if}
+</button>

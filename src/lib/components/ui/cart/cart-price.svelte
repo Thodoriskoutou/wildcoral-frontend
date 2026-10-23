@@ -1,0 +1,12 @@
+<script lang="ts">
+	import { formatLocale } from '$lib/i18n'
+	import { cn } from '$lib/utils.js'
+	import { getCartLineContext } from './ctx.svelte.js'
+	import { formatPrice } from './format-price.js'
+	let { class: className = '', locale = formatLocale() }: { class?: string; locale?: string } = $props()
+	const { item } = getCartLineContext()
+	const currencyCode = $derived((item as { currency_code?: string }).currency_code ?? 'usd')
+	const formatted = $derived(formatPrice(item.unit_price, currencyCode, locale))
+</script>
+
+{#if formatted}<p data-cart-price class={cn('text-sm font-medium', className)}>{formatted}</p>{/if}

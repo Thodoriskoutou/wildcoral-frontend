@@ -1,0 +1,29 @@
+<script lang="ts">
+	import { t, l } from '$lib/i18n';
+	import { cn } from '$lib/utils.js'
+	import { page } from '$app/state'
+	import { buttonVariants, type ButtonSize, type ButtonVariant } from '$lib/components/ui/button/index.js'
+	import { getPageNavContext } from './page-nav-ctx.svelte.js'
+	import { buildPageHref } from './page-nav-logic.js'
+	import type { Snippet } from 'svelte'
+
+	let {
+		class: className = '',
+		variant = 'ghost',
+		size = 'sm',
+		children
+	}: { class?: string; variant?: ButtonVariant; size?: ButtonSize; children?: Snippet } = $props()
+	const ctx = getPageNavContext()
+	const disabled = $derived(ctx.page <= 0)
+	const href = $derived(buildPageHref(page.url, ctx.pageParam, ctx.page - 1))
+</script>
+
+{#if disabled}
+	<span data-page-nav-prev aria-disabled="true" class={cn(buttonVariants({ variant, size }), 'pointer-events-none opacity-50', className)}
+		>{#if children}{@render children()}{:else}{t('Previous')}{/if}</span
+	>
+{:else}
+	<a data-page-nav-prev href={l(href)} rel="prev" aria-label={t('Previous page')} class={cn(buttonVariants({ variant, size }), className)}
+		>{#if children}{@render children()}{:else}{t('Previous')}{/if}</a
+	>
+{/if}
