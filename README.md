@@ -79,7 +79,6 @@ Adding a new variable means adding it to `src/env.ts` as well as your `.env`.
 | `MEDUSA_DEFAULT_REGION_ID`    | no       | Pin a region instead of resolving one per visitor        |
 | `MEDUSA_DEFAULT_COUNTRY_CODE` | no       | Used to pick the default region                          |
 | `STRIPE_KEY`                  | no       | `pk_...`; `/checkout` shows a placeholder without it     |
-| `STRIPE_REDIRECT_URL`         | no       | Absolute URL of your `/checkout/return` route            |
 | `SITE_NAME`, `SITE_URL`       | no       | Used in the navbar, `<title>`, and Open Graph tags       |
 
 The two Medusa vars are validated at boot — the app will refuse to start without them.

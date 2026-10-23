@@ -37,8 +37,6 @@ export const variables = defineEnvVars({
 
 	/** Stripe publishable key (pk_...). Leave unset until you wire up payments. */
 	STRIPE_KEY: { public: true, schema: v.optional(v.string(), '') },
-	/** Absolute URL Stripe redirects back to after payment — must be your /checkout/return route. */
-	STRIPE_REDIRECT_URL: { public: true, schema: v.optional(v.string(), 'http://localhost:5173/checkout/return') },
 
 	/** Guest order tracking code and verified-session lifetime, in seconds. */
 	GUEST_ORDER_TRACKING_OTP_TTL_SECONDS: {

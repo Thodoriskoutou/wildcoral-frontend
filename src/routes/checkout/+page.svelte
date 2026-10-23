@@ -7,20 +7,10 @@
 	// Braintree). This page adds the empty / not-configured states around it and sends the shopper
 	// to /success when the order is placed.
 	//
-	// `returnUrl` MUST point at this app's /checkout/return route — Stripe requires it even when
-	// confirmation happens without a redirect.
-	import { STRIPE_KEY, STRIPE_REDIRECT_URL } from '$app/env/public';
-
-	// The page Stripe sends the customer back to, in the language they are using.
-	function returnUrlInThisLanguage(url: string): string {
-		try {
-			const target = new URL(url);
-			target.pathname = l(target.pathname);
-			return target.toString();
-		} catch {
-			return url;
-		}
-	}
+	// Stripe requires an absolute return URL even when confirmation does not redirect. It is derived
+	// from the canonical storefront URL, so deployments cannot accidentally point it somewhere else.
+	import { SITE_URL, STRIPE_KEY } from '$app/env/public';
+	const stripeReturnUrl = $derived(new URL(l('/checkout/return'), SITE_URL).toString());
 	import { getCart } from 'sveltekit-medusa-sdk/cart';
 	import { CheckoutAuto, resolveCheckoutProvider } from '#lib/components/ui/checkout/index.js';
 	import { Metadata } from '#lib/components/ui/seo/index.js';
@@ -91,15 +81,14 @@
 				<p class="text-sm text-gray-600">{t('We can\'t take payments on the website just yet. Please check back soon.')}</p>
 				{#if dev}
 					<p class="text-xs text-gray-400 mt-6">
-						{t('Dev note: set')} <code>STRIPE_KEY</code> {t('(publishable key) and')} <code>STRIPE_REDIRECT_URL</code> {t('in')}
-						<code>.env</code>.
+						{t('Dev note: set')} <code>STRIPE_KEY</code> {t('(publishable key) in')} <code>.env</code>.
 					</p>
 				{/if}
 			</div>
 		{:else}
 			<CheckoutAuto
 				publishableKey={STRIPE_KEY}
-				returnUrl={returnUrlInThisLanguage(STRIPE_REDIRECT_URL)}
+				returnUrl={stripeReturnUrl}
 				redirectTo="/success"
 				oncomplete={rememberOrder}
 			/>

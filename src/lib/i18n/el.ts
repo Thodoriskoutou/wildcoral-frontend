@@ -9,6 +9,7 @@ export const el: Record<string, string> = {
 	"\"We believe swimwear should be an extension of your identity—not a costume. Each piece is designed to honor the natural form while celebrating individuality.\"":
 		"«Πιστεύουμε ότι το μαγιό πρέπει να είναι προέκταση της ταυτότητάς σας — όχι ένα κοστούμι. Κάθε κομμάτι σχεδιάζεται ώστε να τιμά τη φυσική μορφή του σώματος και να γιορτάζει την ατομικότητα.»",
 	"(optional)": "(προαιρετικό)",
+	"(publishable key) in": "(δημοσιεύσιμο κλειδί) στο",
 	"+{more} more": "+{more} ακόμη",
 	"100% plastic-free, fully recyclable materials with a reusable linen pouch":
 		"Υλικά 100% χωρίς πλαστικό, πλήρως ανακυκλώσιμα, με επαναχρησιμοποιήσιμο λινό πουγκί",
