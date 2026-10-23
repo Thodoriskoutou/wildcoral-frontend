@@ -40,17 +40,14 @@ export const variables = defineEnvVars({
 	/** Absolute URL Stripe redirects back to after payment — must be your /checkout/return route. */
 	STRIPE_REDIRECT_URL: { public: true, schema: v.optional(v.string(), 'http://localhost:5173/checkout/return') },
 
-	/**
-	 * Contact form (/contact). Messages are emailed through Resend (resend.com): create an API key there and
-	 * set these. Without RESEND_API_KEY the page shows your contact details but no form.
-	 */
-	RESEND_API_KEY: { schema: v.optional(v.string(), '') },
-	/** Where messages arrive. Defaults to `contactEmail` in src/lib/site.ts. */
-	CONTACT_TO_EMAIL: { schema: v.optional(v.string(), '') },
-	/** The sender shown on the notification, e.g. "Wild Coral <shop@yourdomain.gr>" (a domain verified in Resend). */
-	CONTACT_FROM_EMAIL: { schema: v.optional(v.string(), '') },
-	/** Resend's API address. Only change it for a proxy or testing. */
-	RESEND_API_URL: { schema: v.optional(v.string(), 'https://api.resend.com/emails') },
+	/** Guest order tracking code and verified-session lifetime, in seconds. */
+	GUEST_ORDER_TRACKING_OTP_TTL_SECONDS: {
+		schema: (value: string | undefined) => {
+			const normalized = value?.trim() || '600'
+			if (!/^[1-9]\d*$/.test(normalized)) throw new Error('GUEST_ORDER_TRACKING_OTP_TTL_SECONDS must be a positive integer number of seconds')
+			return Number(normalized)
+		}
+	},
 
 	/** Shown in <title>, Open Graph tags, and JSON-LD. */
 	SITE_NAME: { public: true, schema: v.optional(v.string(), 'My Store') },

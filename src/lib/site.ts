@@ -69,7 +69,7 @@ export const site = {
 	sizeChart: [] as { size: string; bust: string; waist: string; hips: string }[],
 	sizeChartUnit: 'cm',
 
-	/** Public contact email, shown on the /contact page (and used as the form's destination unless CONTACT_TO_EMAIL is set). */
+	/** Public contact email, shown on the /contact page. Contact-form delivery is configured in Medusa. */
 	contactEmail: '',
 	/** Shown on the /contact page, e.g. '+30 210 000 0000'. Empty hides the line. */
 	phone: '',

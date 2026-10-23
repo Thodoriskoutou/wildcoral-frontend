@@ -75,6 +75,7 @@ Adding a new variable means adding it to `src/env.ts` as well as your `.env`.
 | `JOURNAL_CACHE_TTL_SECONDS`   | no       | Public journal cache lifetime; empty, `null`, or `0` disables it |
 | `PRODUCT_CACHE_TTL_SECONDS`   | no       | Public catalog cache lifetime; empty, `null`, or `0` disables it |
 | `CACHE_PURGE_TOKEN`           | no       | Bearer token for the cache-purge webhook endpoints        |
+| `GUEST_ORDER_TRACKING_OTP_TTL_SECONDS` | no | Guest code and verified-session lifetime; defaults to `600` |
 | `MEDUSA_DEFAULT_REGION_ID`    | no       | Pin a region instead of resolving one per visitor        |
 | `MEDUSA_DEFAULT_COUNTRY_CODE` | no       | Used to pick the default region                          |
 | `STRIPE_KEY`                  | no       | `pk_...`; `/checkout` shows a placeholder without it     |

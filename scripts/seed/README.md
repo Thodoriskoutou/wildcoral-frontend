@@ -239,7 +239,8 @@ Nothing to install: the pages are already wired to Medusa's customers.
 - **Sign up** (`/account` → "Create an Account") creates the customer in Medusa. It shows up in the
   admin under **Customers**, with the first and last name typed on the form. Passwords need 8+ characters.
 - **Sign in / sign out / forgot password** all run against Medusa.
-- **Orders** (`/account#orders`, and "Track Order" in the site menu) lists the signed-in customer's orders.
+- **Orders** (`/account#orders`) lists the signed-in customer's orders. The site-menu **Track Order** link
+  opens `/order-track` for guest tracking; signed-in visitors are redirected back to this account list.
   Each opens `/account/orders/<id>`: a progress line, tracking number, items, totals and delivery address.
   Customers only ever see their own orders.
 
@@ -354,8 +355,8 @@ The site uses two plugins that are already installed in your Medusa:
 
 - **Guest orders aren't linked to accounts.** An order placed without signing in stays a guest order,
   even if the same email signs up later, so it won't appear in that account.
-- **Forgot password needs email.** Medusa only emits a "password reset" event; your backend needs a
-  notification provider (e.g. SendGrid/Resend) and a small subscriber that emails the customer a link like
+- **Forgot password needs email.** Medusa only emits a "password reset" event; your backend needs its SMTP
+  notification provider and a small subscriber that emails the customer a link like
   `https://your-site/?auth=reset&token=<token>`. Until then the form works but no email arrives.
 - **Checkout can't place real orders yet.** Only the manual payment provider is enabled on your Medusa
   region, so the storefront checkout says "We can't take payments on the website just yet". Enable Stripe on the region (and set
@@ -428,29 +429,28 @@ signed-in customer's name and email are filled in for them.
 In `src/lib/site.ts`: `contactEmail`, `phone`, `address`, `supportHours` and the `social` links. Whatever is
 empty is simply not shown.
 
-## Making the form send email
+## Making the contact form and guest tracking send email
 
-A form that can't deliver would swallow customers' messages, so **the form only appears once email sending is set
-up**. Until then the page shows your email address (if you set `contactEmail`) and the other details.
+Email delivery is configured entirely in the Medusa backend's SMTP Notification Module. The storefront has no
+mail-provider credentials. Add these public Store API routes in the backend, validate every request again there,
+and rate-limit them by IP and recipient:
 
-The form sends through [Resend](https://resend.com) using your own account:
+| Route | Request body | Required backend behavior |
+| --- | --- | --- |
+| `POST /store/contact` | `name`, `email`, `topic`, `order`, `message` | Send the `contact-message` notification to the configured support recipient. Set the visitor email as `reply_to`. |
+| `POST /store/guest-order-tracking/lookup` | `email`, `order_number` | Find orders server-side using normalized email and Medusa's displayed order number. Return `{ order_id }` only on a match; return `email_has_no_orders` when the email has none and `order_not_owned` when the number is not one of its orders. |
+| `POST /store/guest-order-tracking/send-code` | `email`, `order_number`, `code` | Repeat the ownership check, then send the `guest-order-tracking-code` notification. Do not create or validate OTP state in Medusa. |
 
-1. Create a free Resend account and an **API key**.
-2. Verify your domain in Resend (so the sender can be `shop@yourdomain.gr`). For a first test you can skip this:
-   Resend's test sender only delivers to the address you registered with.
-3. In your `.env`:
+The `contact-message` template receives the contact fields and should use `email` as reply-to. The
+`guest-order-tracking-code` template receives `code`, `order_number`, and an expiry of ten minutes (or the value of
+`GUEST_ORDER_TRACKING_OTP_TTL_SECONDS`). Configure the sender and support recipient in the backend SMTP provider.
 
-   ```
-   RESEND_API_KEY="re_..."
-   CONTACT_TO_EMAIL="you@yourdomain.gr"          # where messages arrive (default: contactEmail in site.ts)
-   CONTACT_FROM_EMAIL="Wild Coral <shop@yourdomain.gr>"   # a domain verified in Resend
-   ```
+The storefront creates a six-digit code, stores only its hash, permits five attempts and up to three sends per
+email/IP window, and asks Medusa only to deliver it. Its challenges and verified guest sessions are process-local:
+they expire after `GUEST_ORDER_TRACKING_OTP_TTL_SECONDS` (default `600`), are lost after a restart, and require a
+single storefront replica. A verified guest session is represented by an opaque HttpOnly cookie; no order id is put
+in the cookie.
 
-4. Restart the site. The form appears on `/contact`.
-
-Each message arrives as a plain email with the customer's name, email, topic, order number and message. **Reply**
-answers the customer directly (their address is set as the reply-to).
-
-**Spam:** a hidden field that only bots fill in (those messages are dropped silently), and at most 5 messages per
-visitor every 10 minutes. If sending ever fails, the customer sees an error and keeps what they wrote; the
-details are in the server log. If you'd rather use another email service, tell me which.
+The contact form retains a honeypot and a small storefront rate limit, but the backend limits are mandatory because
+the Store API routes are public. If Medusa cannot deliver a message, the visitor keeps their form data and sees an
+error.

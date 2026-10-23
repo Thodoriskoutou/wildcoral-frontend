@@ -177,7 +177,6 @@ export const el: Record<string, string> = {
 	"Email": "Email",
 	"Email Address": "Διεύθυνση email",
 	"Email address": "Διεύθυνση email",
-	"Email us": "Στείλτε μας email",
 	"Enter address": "Εισαγάγετε διεύθυνση",
 	"Enter coupon code": "Εισαγάγετε κωδικό κουπονιού",
 	"Enter your email and password to sign in.": "Εισαγάγετε το email και τον κωδικό σας για να συνδεθείτε.",
@@ -294,8 +293,6 @@ export const el: Record<string, string> = {
 		"Μετρήστε γύρω από τη φυσική γραμμή της μέσης, το στενότερο σημείο του κορμού σας",
 	"Menu": "Μενού",
 	"Message": "Μήνυμα",
-	"Messages can’t be sent right now. Please email us directly instead.":
-		"Δεν είναι δυνατή η αποστολή μηνυμάτων αυτή τη στιγμή. Στείλτε μας email απευθείας.",
 	"My Account": "Ο λογαριασμός μου",
 	"My order": "Η παραγγελία μου",
 	"NEW": "ΝΕΟ",
@@ -350,8 +347,6 @@ export const el: Record<string, string> = {
 	"Orders are only shown to the account they were placed with.":
 		"Οι παραγγελίες εμφανίζονται μόνο στον λογαριασμό με τον οποίο έγιναν.",
 	"Our collection is being prepared — please check back soon.": "Η συλλογή μας ετοιμάζεται — ελάτε ξανά σύντομα.",
-	"Our contact details are coming soon. In the meantime, the Customer Care pages answer most questions about sizing, shipping and returns.":
-		"Τα στοιχεία επικοινωνίας μας θα προστεθούν σύντομα. Στο μεταξύ, οι σελίδες Εξυπηρέτησης πελατών απαντούν στις περισσότερες ερωτήσεις για μεγέθη, αποστολές και επιστροφές.",
 	"Our pieces are designed to fit true to size. If you're between sizes or prefer a more relaxed fit, we recommend sizing up. For personalized sizing advice, contact our styling concierge.":
 		"Τα κομμάτια μας σχεδιάζονται ώστε να ταιριάζουν ακριβώς στο μέγεθός τους. Αν βρίσκεστε ανάμεσα σε δύο μεγέθη ή προτιμάτε πιο άνετη εφαρμογή, προτείνουμε να επιλέξετε μεγαλύτερο μέγεθος. Για εξατομικευμένες συμβουλές μεγέθους, επικοινωνήστε με τον σύμβουλο στιλ μας.",
 	"Our team is happy to help with sizing, orders and returns.":
@@ -590,7 +585,6 @@ export const el: Record<string, string> = {
 	"The collection is unavailable": "Η συλλογή δεν είναι διαθέσιμη",
 	"The horizon you are looking for is currently out of reach.": "Ο ορίζοντας που αναζητάτε είναι προς το παρόν απρόσιτος.",
 	"The items on this order couldn't be loaded.": "Δεν ήταν δυνατή η φόρτωση των προϊόντων αυτής της παραγγελίας.",
-	"The quickest way to reach us is by email.": "Ο ταχύτερος τρόπος να επικοινωνήσετε μαζί μας είναι το email.",
 	"This account needs an extra sign-in step that is not supported yet.":
 		"Αυτός ο λογαριασμός απαιτεί επιπλέον βήμα σύνδεσης που δεν υποστηρίζεται ακόμη.",
 	"This combination is not available.": "Αυτός ο συνδυασμός δεν είναι διαθέσιμος.",
@@ -710,6 +704,18 @@ export const el: Record<string, string> = {
 		"Η κριτική σας αναμένει έγκριση. Μπορείτε να την επεξεργαστείτε παρακάτω.",
 	"Your shopping cart": "Το καλάθι αγορών σας",
 	"Your wishlist could not be loaded right now.": "Δεν ήταν δυνατή η φόρτωση των αγαπημένων σας αυτή τη στιγμή.",
+	"We can’t find any orders for that email address.": "Δεν μπορούμε να βρούμε παραγγελίες για αυτή τη διεύθυνση email.",
+	"That order number is not associated with this email address.": "Αυτός ο αριθμός παραγγελίας δεν αντιστοιχεί σε αυτή τη διεύθυνση email.",
+	"Too many codes were requested. Please wait a few minutes and try again.": "Ζητήθηκαν πάρα πολλοί κωδικοί. Περιμένετε λίγα λεπτά και δοκιμάστε ξανά.",
+	"We couldn’t send a code right now. Please try again in a moment.": "Δεν μπορέσαμε να στείλουμε κωδικό αυτή τη στιγμή. Δοκιμάστε ξανά σε λίγο.",
+	"That code is incorrect or has expired. Request a new one and try again.": "Αυτός ο κωδικός είναι λανθασμένος ή έχει λήξει. Ζητήστε νέο κωδικό και δοκιμάστε ξανά.",
+	"Enter your order number and the email used at checkout. We’ll send a code to verify it’s yours.": "Εισαγάγετε τον αριθμό παραγγελίας και το email που χρησιμοποιήσατε στο ταμείο. Θα στείλουμε έναν κωδικό για να επιβεβαιώσουμε ότι είναι δική σας.",
+	"Verification code": "Κωδικός επαλήθευσης",
+	"We sent a six-digit code to {email}.": "Στείλαμε έναν εξαψήφιο κωδικό στο {email}.",
+	"Verifying…": "Επαλήθευση…",
+	"View order": "Προβολή παραγγελίας",
+	"Use a different order": "Χρησιμοποιήστε διαφορετική παραγγελία",
+	"Send verification code": "Αποστολή κωδικού επαλήθευσης",
 	"You’ll be redirected to your bank to authorize the payment.":
 		"Θα μεταφερθείτε στην τράπεζά σας για να εγκρίνετε την πληρωμή.",
 	"You’ve sent a few messages already. Please wait a few minutes and try again.":

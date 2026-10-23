@@ -23,6 +23,7 @@ import {
 } from '#lib/i18n/index.js';
 
 import { LOCALE_COOKIE } from '#lib/i18n/config.js';
+import { GUEST_ORDER_SESSION_COOKIE, getGuestTrackingOrder } from '#lib/server/guest-order-tracking.js';
 
 /**
  * Configures the Medusa client once, per request. Everything else — cart, session,
@@ -148,6 +149,14 @@ const medusaLocaleHandle: Handle = ({ event, resolve }) => {
 	return resolve(event)
 }
 
+/** Rehydrates the request-local guest tracking state from the opaque process-local session token. */
+const guestOrderTrackingHandle: Handle = ({ event, resolve }) => {
+	const token = event.cookies.get(GUEST_ORDER_SESSION_COOKIE)
+	event.locals.guestOrderId = getGuestTrackingOrder(token)
+	if (token && !event.locals.guestOrderId) event.cookies.delete(GUEST_ORDER_SESSION_COOKIE, { path: '/' })
+	return resolve(event)
+}
+
 /**
  * Dynamic HTML and remote/data responses must never be stored by a browser or an
  * intermediary. Public journal/catalog freshness is controlled exclusively by
@@ -165,4 +174,4 @@ const cacheControlHandle: Handle = async ({ event, resolve }) => {
 	return response
 }
 
-export const handle = sequence(localeHandle, medusaHandle, medusaLocaleHandle, cacheControlHandle)
+export const handle = sequence(localeHandle, medusaHandle, medusaLocaleHandle, guestOrderTrackingHandle, cacheControlHandle)

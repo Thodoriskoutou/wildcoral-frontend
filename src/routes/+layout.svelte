@@ -352,7 +352,7 @@
 								<a href={l(contactHref)} class="text-lg hover:opacity-70 transition-opacity" onclick={() => (menuOpen = false)}>{t('Contact Us')}</a>
 							</li>
 							<li>
-								<a href={l('/account#orders')} class="text-lg hover:opacity-70 transition-opacity" onclick={() => (menuOpen = false)}>{t('Track Order')}</a>
+								<a href={l('/order-track')} class="text-lg hover:opacity-70 transition-opacity" onclick={() => (menuOpen = false)}>{t('Track Order')}</a>
 							</li>
 						</ul>
 					</div>
