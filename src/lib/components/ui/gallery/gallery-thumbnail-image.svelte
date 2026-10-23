@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { t } from '$lib/i18n'
-	import * as Carousel from '$lib/components/ui/carousel/index.js'
-	import { cn } from '$lib/utils.js'
+	import { t } from '#lib/i18n/index.js'
+	import * as Carousel from '#lib/components/ui/carousel/index.js'
+	import { cn } from '#lib/utils.js'
 	import { getGalleryContext } from './ctx.svelte.js'
 
 	let { class: className = '' }: { class?: string } = $props()

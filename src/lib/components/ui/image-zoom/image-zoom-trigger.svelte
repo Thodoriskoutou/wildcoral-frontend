@@ -4,7 +4,7 @@
 -->
 <script lang="ts">
 	import { getImageZoomContext } from './ctx'
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	import type { HTMLImgAttributes } from 'svelte/elements'
 	import { onMount } from 'svelte'
 

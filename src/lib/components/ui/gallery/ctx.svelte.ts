@@ -1,5 +1,5 @@
 import { getContext, setContext } from 'svelte'
-import type { CarouselAPI } from '$lib/components/ui/carousel/context.js'
+import type { CarouselAPI } from '#lib/components/ui/carousel/context.js'
 import type { EmblaOptionsType, EmblaPluginType } from 'embla-carousel'
 import type { StoreProductImage } from '@medusajs/types'
 

@@ -16,7 +16,7 @@ The app has no test suite and no lint script.
 
 ## Configuration
 
-- The SvelteKit config is inline in `vite.config.ts` (there is no `svelte.config.js`): adapter, `compilerOptions.experimental.async`, `kit.experimental.remoteFunctions` and the `$lib` alias.
+- The SvelteKit config is inline in `vite.config.ts` (there is no `svelte.config.js`): adapter, `compilerOptions.experimental.async`, `kit.experimental.remoteFunctions` and the `#lib` alias.
 - The adapter is `@sveltejs/adapter-auto`, which only detects a few hosts. For a Docker or Node host switch to `adapter-node`; its output goes to `build/`.
 - Environment variables are declared and validated in `src/env.ts`. There is no `PUBLIC_` prefix: a variable is public because it has `public: true`. A new variable means editing `src/env.ts` and `.env.example`.
 - `MEDUSA_BACKEND_URL` and `MEDUSA_PUBLISHABLE_KEY` are required, and validation also runs during `vite build`, so a build without them fails. The build also prerenders a remote function against the backend; with the backend down it logs a non-fatal "Failed to prerender" error.

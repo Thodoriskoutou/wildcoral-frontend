@@ -1,6 +1,6 @@
-import { t as translate, msg } from '$lib/i18n'
+import { t as translate, msg } from '#lib/i18n/index.js'
 import { getContext, setContext } from 'svelte'
-import { search } from 'sveltekit-medusa-sdk'
+import { search } from 'sveltekit-medusa-sdk/search'
 
 export type SearchHit = {
 	type: 'product' | 'category' | 'collection' | 'content' | (string & {})

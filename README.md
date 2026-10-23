@@ -72,6 +72,9 @@ Adding a new variable means adding it to `src/env.ts` as well as your `.env`.
 | ----------------------------- | -------- | -------------------------------------------------------- |
 | `MEDUSA_BACKEND_URL`          | yes      | e.g. `http://localhost:9000`                             |
 | `MEDUSA_PUBLISHABLE_KEY`      | yes      | Medusa admin → Settings → Publishable API keys           |
+| `JOURNAL_CACHE_TTL_SECONDS`   | no       | Public journal cache lifetime; empty, `null`, or `0` disables it |
+| `PRODUCT_CACHE_TTL_SECONDS`   | no       | Public catalog cache lifetime; empty, `null`, or `0` disables it |
+| `CACHE_PURGE_TOKEN`           | no       | Bearer token for the cache-purge webhook endpoints        |
 | `MEDUSA_DEFAULT_REGION_ID`    | no       | Pin a region instead of resolving one per visitor        |
 | `MEDUSA_DEFAULT_COUNTRY_CODE` | no       | Used to pick the default region                          |
 | `STRIPE_KEY`                  | no       | `pk_...`; `/checkout` shows a placeholder without it     |
@@ -131,6 +134,27 @@ Two notes:
 ## Deployment
 
 The app uses `@sveltejs/adapter-auto`, which detects a handful of hosts. For anything else, swap it in `vite.config.ts` for the adapter you need — `adapter-node`, `adapter-cloudflare`, `adapter-vercel`, etc.
+
+### Docker
+
+The Docker build prerenders `/customer-care`, so it must receive the Medusa configuration during the builder stage. Supply it as build arguments, then provide the same values (plus any runtime-only cache configuration) when starting the container:
+
+```bash
+docker build \
+  --build-arg MEDUSA_BACKEND_URL="https://medusa.example.com" \
+  --build-arg MEDUSA_PUBLISHABLE_KEY="pk_..." \
+  -t wildcoral-storefront .
+
+docker run --rm -p 3000:3000 \
+  -e MEDUSA_BACKEND_URL="https://medusa.example.com" \
+  -e MEDUSA_PUBLISHABLE_KEY="pk_..." \
+  -e JOURNAL_CACHE_TTL_SECONDS=60 \
+  -e PRODUCT_CACHE_TTL_SECONDS=60 \
+  -e CACHE_PURGE_TOKEN="replace-with-a-long-random-token" \
+  wildcoral-storefront
+```
+
+The in-process caches are single-replica only. Configure Medusa/content-plugin webhooks to `POST` to `/api/cache/purge/journal` for journal changes and `/api/cache/purge/products` for product, price, inventory, category, or collection changes, with `Authorization: Bearer <CACHE_PURGE_TOKEN>`.
 
 ## License
 

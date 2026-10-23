@@ -1,6 +1,6 @@
 <script lang="ts">
 	import SearchIcon from '@lucide/svelte/icons/search'
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	import type { Snippet } from 'svelte'
 
 	interface Props {

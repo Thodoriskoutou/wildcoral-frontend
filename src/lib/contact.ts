@@ -1,4 +1,4 @@
-import { msg } from '$lib/i18n'
+import { msg } from '#lib/i18n/index.js'
 /** What a visitor can say their message is about (the key travels in the URL as ?topic=… and in the form). */
 export const TOPICS = {
 	sizing: msg('Sizing & fit'),

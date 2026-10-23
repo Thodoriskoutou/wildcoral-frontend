@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
+	import { t } from '#lib/i18n/index.js';
 	// Deliberately minimal: `Reviews.Form` drives the *create* flow through
 	// `reviewForm`, a native SvelteKit remote-`form()` whose `field.as(...)`/`issues()` API
 	// `updateReview` (a `command`, not a `form`) doesn't provide — reusing it for edit would need
@@ -7,10 +7,10 @@
 	// task's scope. Until that shared edit-form exists, this is a thin toggle: inline
 	// rating/title/body fields seeded from the current review, `updateReview` on save, then
 	// refresh. Reads the per-item review from context set by `<Reviews.List>`/`<Review>`.
-	import { Button } from '$lib/components/ui/button/index.js'
-	import { Textarea } from '$lib/components/ui/textarea/index.js'
-	import { Label } from '$lib/components/ui/label/index.js'
-	import { cn } from '$lib/utils.js'
+	import { Button } from '#lib/components/ui/button/index.js'
+	import { Textarea } from '#lib/components/ui/textarea/index.js'
+	import { Label } from '#lib/components/ui/label/index.js'
+	import { cn } from '#lib/utils.js'
 	import { updateReview, getMyReviews } from 'sveltekit-medusa-sdk/reviews'
 	import { getReviewsContext } from '../reviews/reviews-ctx.svelte.js'
 	import { getReviewItemContextOptional } from '../review/reviews-item-ctx.svelte.js'

@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { t, l } from '$lib/i18n';
-	import { Metadata } from '$lib/components/ui/seo';
+	import { t, l } from '#lib/i18n/index.js';
+	import { Metadata } from '#lib/components/ui/seo/index.js';
 	import { page } from '$app/state';
-	import { getProductsQuery } from 'sveltekit-medusa-sdk';
-	import { toCatalogProduct, formatPrice, previewMedia, PRODUCT_FIELDS, type CatalogProduct } from '$lib/medusa/catalog';
-	import { safe } from '$lib/medusa/safe';
-	import ProductMedia from '$lib/components/ProductMedia.svelte';
+	import { getProductsQuery } from '#lib/medusa/catalog.remote.js';
+	import { toCatalogProduct, formatPrice, previewMedia, PRODUCT_FIELDS, type CatalogProduct } from '#lib/medusa/catalog.js';
+	import { safe } from '#lib/medusa/safe.js';
+	import ProductMedia from '#lib/components/ProductMedia.svelte';
 
 	let searchTerm = $derived(page.url.searchParams.get('q') || '');
 	let hoveredProductColors = $state<{ [key: string]: number }>({});

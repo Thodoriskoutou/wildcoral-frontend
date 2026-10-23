@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t, l } from '$lib/i18n';
+	import { t, l } from '#lib/i18n/index.js';
 	// Checkout: the Wild Coral page chrome around the registry's region-driven checkout.
 	//
 	// `CheckoutAuto` owns the whole flow — address form → delivery → payment session → confirm →
@@ -21,11 +21,11 @@
 			return url;
 		}
 	}
-	import { getCart } from 'sveltekit-medusa-sdk';
-	import { CheckoutAuto, resolveCheckoutProvider } from '$lib/components/ui/checkout';
-	import { Metadata } from '$lib/components/ui/seo';
-	import { safe } from '$lib/medusa/safe';
-	import { rememberOrder } from '$lib/medusa/order-summary';
+	import { getCart } from 'sveltekit-medusa-sdk/cart';
+	import { CheckoutAuto, resolveCheckoutProvider } from '#lib/components/ui/checkout/index.js';
+	import { Metadata } from '#lib/components/ui/seo/index.js';
+	import { safe } from '#lib/medusa/safe.js';
+	import { rememberOrder } from '#lib/medusa/order-summary.js';
 	import { dev } from '$app/env';
 
 	const cartResult = $derived(await safe(async () => await getCart()));

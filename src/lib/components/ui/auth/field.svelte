@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte'
-	import * as Field from '$lib/components/ui/field/index.js'
-	import { cn } from '$lib/utils.js'
+	import * as Field from '#lib/components/ui/field/index.js'
+	import { cn } from '#lib/utils.js'
 	import { getAuthFormContext, setAuthFieldContext } from './ctx.svelte.js'
 
 	let { name, class: className = '', children }: { name: string; class?: string; children: Snippet } = $props()

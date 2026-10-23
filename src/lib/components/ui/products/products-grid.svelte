@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { cn } from '$lib/utils.js'
-	import * as Product from '$lib/components/ui/product/index.js'
+	import { cn } from '#lib/utils.js'
+	import * as Product from '#lib/components/ui/product/index.js'
 	import { getProductsContext } from './products-ctx.svelte.js'
 	import type { StoreProduct } from '@medusajs/types'
 	import type { Snippet } from 'svelte'

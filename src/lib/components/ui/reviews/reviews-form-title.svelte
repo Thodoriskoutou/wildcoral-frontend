@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
+	import { t } from '#lib/i18n/index.js';
 	import InputText from '../input-text/input-text.svelte'
 	import { getReviewFormContext } from './review-form-ctx.svelte.js'
 	let { class: className = '' }: { class?: string } = $props()

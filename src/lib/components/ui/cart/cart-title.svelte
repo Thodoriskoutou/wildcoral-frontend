@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { l } from '$lib/i18n';
-	import { cn } from '$lib/utils.js'
+	import { l } from '#lib/i18n/index.js';
+	import { cn } from '#lib/utils.js'
 	import { getCartContext, getCartLineContext, getCartSheetContextOptional } from './ctx.svelte.js'
 	let { class: className = '' }: { class?: string } = $props()
 	const ctx = getCartContext()

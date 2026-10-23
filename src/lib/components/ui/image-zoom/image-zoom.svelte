@@ -3,14 +3,14 @@
   Copyright (c) 2025 kevwpl — MIT License. See README credits for the full notice.
 -->
 <script lang="ts">
-	import { t } from '$lib/i18n';
+	import { t } from '#lib/i18n/index.js';
 	import { writable } from 'svelte/store'
 	import { setImageZoomContext, type ZoomImageData } from './ctx'
 	import { fade } from 'svelte/transition'
 	import { type Snippet } from 'svelte'
-	import { Button } from '$lib/components/ui/button'
+	import { Button } from '#lib/components/ui/button/index.js'
 	import { X, ChevronLeft, ChevronRight } from '@lucide/svelte'
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 
 	let {
 		class: className,

@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { t } from '$lib/i18n'
+	import { t } from '#lib/i18n/index.js'
 	// The drawer's heading. Always emits a Sheet.Title plus an sr-only Sheet.Description, because
 	// a dialog without both is an a11y hole (and bits-ui warns about it) — `children` replaces the
 	// heading's *content*, never the elements themselves.
 	// Note this is the cart's own heading; the per-line product title is <Cart.Title>.
-	import { cn } from '$lib/utils.js'
-	import * as Sheet from '$lib/components/ui/sheet/index.js'
+	import { cn } from '#lib/utils.js'
+	import * as Sheet from '#lib/components/ui/sheet/index.js'
 	import type { Snippet } from 'svelte'
 
 	let {

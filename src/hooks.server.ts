@@ -1,9 +1,16 @@
-import { redirect } from '@sveltejs/kit'
-import { sequence } from '@sveltejs/kit/hooks'
-import type { Handle } from '@sveltejs/kit'
-import { getRequestEvent } from '$app/server'
-import { createMedusaHandle } from 'sveltekit-medusa-sdk/server'
-import { MEDUSA_BACKEND_URL, MEDUSA_PUBLISHABLE_KEY, MEDUSA_DEFAULT_REGION_ID, MEDUSA_DEFAULT_COUNTRY_CODE } from '$app/env/private'
+import { redirect } from '@sveltejs/kit';
+import { sequence, type Handle } from '@sveltejs/kit/hooks';
+import { getRequestEvent } from '$app/server';
+import { building } from '$app/environment';
+import { createMedusaHandle } from 'sveltekit-medusa-sdk/server';
+
+import {
+	MEDUSA_BACKEND_URL,
+	MEDUSA_PUBLISHABLE_KEY,
+	MEDUSA_DEFAULT_REGION_ID,
+	MEDUSA_DEFAULT_COUNTRY_CODE
+} from '$app/env/private';
+
 import {
 	defaultLocale,
 	isLocale,
@@ -13,8 +20,9 @@ import {
 	provideServerLocale,
 	stripLocale,
 	type Locale
-} from '$lib/i18n'
-import { LOCALE_COOKIE } from '$lib/i18n/config'
+} from '#lib/i18n/index.js';
+
+import { LOCALE_COOKIE } from '#lib/i18n/config.js';
 
 /**
  * Configures the Medusa client once, per request. Everything else — cart, session,
@@ -45,7 +53,7 @@ const requestLocale = (): Locale | undefined => {
 provideServerLocale(requestLocale)
 
 /** A language picked in a cookie or query string; anything else is ignored. */
-const asLocale = (value: string | null | undefined): Locale | undefined => (isLocale(value) ? value : undefined)
+const asLocale = (value: string | null | undefined): Locale | undefined => isLocale(value) ? value : undefined;
 
 /**
  * Decides the language of every request, from the first source that has one:
@@ -59,13 +67,22 @@ const asLocale = (value: string | null | undefined): Locale | undefined => (isLo
  *     taken to that language's address when they open a page without a prefix.
  */
 const localeHandle: Handle = async ({ event, resolve }) => {
-	const { url, request } = event
-	const remembered = asLocale(event.cookies.get(LOCALE_COOKIE))
-	const remember = (locale: Locale) => event.cookies.set(LOCALE_COOKIE, locale, { path: '/', maxAge: ONE_YEAR, sameSite: 'lax', httpOnly: false, secure: url.protocol === 'https:' })
+	const { url, request } = event;
+	const remembered = asLocale(event.cookies.get(LOCALE_COOKIE));
 
-	const isPageRequest = request.method === 'GET' && !event.isRemoteRequest && !event.isDataRequest && !url.pathname.startsWith('/_app/')
+	const remember = (locale: Locale) => event.cookies.set(LOCALE_COOKIE, locale, {
+		path: '/',
+		maxAge: ONE_YEAR,
+		sameSite: 'lax',
+		httpOnly: false,
+		secure: url.protocol === 'https:'
+	});
 
-	if (isPageRequest) {
+	const isPageRequest = request.method === 'GET' && !event.isRemoteRequest && !event.isDataRequest && !url.pathname.startsWith('/_app/');
+
+	// During prerendering SvelteKit intentionally forbids url.search/searchParams.
+	// Static routes do not need language-query redirects or cookie persistence.
+	if (isPageRequest && !building) {
 		const picked = asLocale(url.searchParams.get('lang'))
 		if (picked) {
 			remember(picked)
@@ -131,4 +148,21 @@ const medusaLocaleHandle: Handle = ({ event, resolve }) => {
 	return resolve(event)
 }
 
-export const handle = sequence(localeHandle, medusaHandle, medusaLocaleHandle)
+/**
+ * Dynamic HTML and remote/data responses must never be stored by a browser or an
+ * intermediary. Public journal/catalog freshness is controlled exclusively by
+ * the server-side TTL cache, whose keys include locale and pricing region.
+ */
+const cacheControlHandle: Handle = async ({ event, resolve }) => {
+	const response = await resolve(event)
+	if (
+		event.isRemoteRequest ||
+		event.isDataRequest ||
+		response.headers.get('content-type')?.includes('text/html')
+	) {
+		response.headers.set('cache-control', 'private, no-store')
+	}
+	return response
+}
+
+export const handle = sequence(localeHandle, medusaHandle, medusaLocaleHandle, cacheControlHandle)

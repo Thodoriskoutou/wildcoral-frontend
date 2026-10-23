@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { t, l } from '$lib/i18n';
-	import { photos } from '$lib/site';
+	import { t, l } from '#lib/i18n/index.js';
+	import { photos } from '#lib/site.js';
 </script>
 
 <div class="relative h-screen w-full bg-gray-900 flex items-center justify-center overflow-hidden">

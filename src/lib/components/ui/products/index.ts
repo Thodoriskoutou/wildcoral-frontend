@@ -1,7 +1,7 @@
 import Root from './products-root.svelte'
 import Grid from './products-grid.svelte'
 import PaginationRoot from './products-pagination.svelte'
-import { Prev, Next, Pages, Info } from '$lib/components/ui/page-nav/index.js'
+import { Prev, Next, Pages, Info } from '#lib/components/ui/page-nav/index.js'
 
 // Callable as <Products.Pagination /> or composed as <Products.Pagination><Products.Pagination.Prev />…
 // The parts are page-nav's; we assign onto our own wrapper, never onto the shared page-nav

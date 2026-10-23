@@ -25,9 +25,14 @@ FROM deps AS builder
 
 COPY . .
 
-ENV NODE_ENV=production
+ARG MEDUSA_BACKEND_URL
+ARG MEDUSA_PUBLISHABLE_KEY
 
-RUN bun run build
+ENV NODE_ENV=production
+ENV MEDUSA_BACKEND_URL=${MEDUSA_BACKEND_URL} \
+    MEDUSA_PUBLISHABLE_KEY=${MEDUSA_PUBLISHABLE_KEY}
+
+RUN bun run --bun build
 
 # ----------------------------------
 # Production dependencies

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { l } from '$lib/i18n';
-	import { cn } from '$lib/utils.js'
+	import { l } from '#lib/i18n/index.js';
+	import { cn } from '#lib/utils.js'
 	import { page } from '$app/state'
-	import { buttonVariants, type ButtonSize, type ButtonVariant } from '$lib/components/ui/button/index.js'
+	import { buttonVariants, type ButtonSize, type ButtonVariant } from '#lib/components/ui/button/index.js'
 	import { getPageNavContext } from './page-nav-ctx.svelte.js'
 	import { buildPageHref, pageWindow } from './page-nav-logic.js'
 

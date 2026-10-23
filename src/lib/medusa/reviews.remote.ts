@@ -1,7 +1,7 @@
-import { msg } from '$lib/i18n'
+import { msg } from '#lib/i18n/index.js'
 import { query, command } from '$app/server';
 import * as v from 'valibot';
-import { getCustomer } from 'sveltekit-medusa-sdk';
+import { getCustomer } from 'sveltekit-medusa-sdk/customer';
 import { getMedusaContext } from 'sveltekit-medusa-sdk/server';
 import { fetchOrders } from './orders.server';
 import { storeFetch } from './store-fetch.server';

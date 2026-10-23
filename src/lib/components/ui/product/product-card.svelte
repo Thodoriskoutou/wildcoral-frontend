@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { l } from '$lib/i18n';
-	import { cn } from '$lib/utils.js'
-	import * as Card from '$lib/components/ui/card/index.js'
+	import { l } from '#lib/i18n/index.js';
+	import { cn } from '#lib/utils.js'
+	import * as Card from '#lib/components/ui/card/index.js'
 	import { createProductContext, setProductContext } from './ctx.svelte.js'
 	import Title from './product-title.svelte'
 	import Thumbnail from './product-thumbnail.svelte'

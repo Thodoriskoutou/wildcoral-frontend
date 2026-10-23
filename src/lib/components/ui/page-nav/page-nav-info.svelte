@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
-	import { cn } from '$lib/utils.js'
+	import { t } from '#lib/i18n/index.js';
+	import { cn } from '#lib/utils.js'
 	import { getPageNavContext } from './page-nav-ctx.svelte.js'
 
 	let { class: className = '' }: { class?: string } = $props()

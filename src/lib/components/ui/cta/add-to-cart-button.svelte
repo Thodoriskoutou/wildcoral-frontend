@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
-	import { cn } from '$lib/utils.js'
+	import { t } from '#lib/i18n/index.js';
+	import { cn } from '#lib/utils.js'
 	import { goto } from '$app/navigation'
-	import { Button, type ButtonSize, type ButtonVariant } from '$lib/components/ui/button/index.js'
-	import { getProductContextOptional } from '$lib/components/ui/product/ctx.svelte.js'
-	import { isPurchasable } from '$lib/components/ui/product/product-logic.js'
-	import { addToCart } from 'sveltekit-medusa-sdk'
+	import { Button, type ButtonSize, type ButtonVariant } from '#lib/components/ui/button/index.js'
+	import { getProductContextOptional } from '#lib/components/ui/product/ctx.svelte.js'
+	import { isPurchasable } from '#lib/components/ui/product/product-logic.js'
+import { addToCart } from 'sveltekit-medusa-sdk/cart'
 	import { resolveVariantId, resolveQuantity } from './add-to-cart-logic.js'
 	import type { StoreCart } from '@medusajs/types'
 	import type { Snippet } from 'svelte'

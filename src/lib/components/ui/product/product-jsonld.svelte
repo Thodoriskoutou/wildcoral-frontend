@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state'
 	import { getProductContext } from './ctx.svelte.js'
-	import JsonLd from '$lib/components/ui/seo/json-ld.svelte'
+	import JsonLd from '#lib/components/ui/seo/json-ld.svelte'
 	import { productSchema } from './product-schema.js'
 	import type { Product, WithContext } from 'schema-dts'
 

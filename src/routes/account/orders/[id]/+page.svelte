@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { t, l } from '$lib/i18n';
+	import { t, l } from '#lib/i18n/index.js';
 	// Order tracking: one of the signed-in customer's orders, on live Medusa data.
 	// `getMyOrder` only returns an order that belongs to the signed-in customer.
 	import { page } from '$app/state';
-	import { getCustomer } from 'sveltekit-medusa-sdk';
-	import { getMyOrder } from '$lib/medusa/tracking.remote';
-	import { safe } from '$lib/medusa/safe';
+	import { getCustomer } from 'sveltekit-medusa-sdk/customer';
+	import { getMyOrder } from '#lib/medusa/tracking.remote.js';
+	import { safe } from '#lib/medusa/safe.js';
 	import { dev } from '$app/env';
-	import { Metadata } from '$lib/components/ui/seo';
-	import OrderDetail from '$lib/components/account/OrderDetail.svelte';
+	import { Metadata } from '#lib/components/ui/seo/index.js';
+	import OrderDetail from '#lib/components/account/OrderDetail.svelte';
 
 	const result = $derived(
 		await safe(async () => {

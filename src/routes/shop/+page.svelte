@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t, l, localized } from '$lib/i18n';
+	import { t, l, localized } from '#lib/i18n/index.js';
 	import SlidersHorizontal from '@lucide/svelte/icons/sliders-horizontal';
 	import ChevronDown from '@lucide/svelte/icons/chevron-down';
 	import X from '@lucide/svelte/icons/x';
@@ -8,11 +8,11 @@
 	import MessageCircle from '@lucide/svelte/icons/message-circle';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
-	import { getProductsQuery, getProductCategoriesQuery } from 'sveltekit-medusa-sdk';
-	import { toCatalogProduct, formatPrice, previewMedia, PRODUCT_FIELDS, type CatalogProduct } from '$lib/medusa/catalog';
-	import ProductMedia from '$lib/components/ProductMedia.svelte';
-	import FilterChip from '$lib/components/FilterChip.svelte';
-	import EmptyFilterState from '$lib/components/EmptyFilterState.svelte';
+	import { getProductsQuery, getProductCategoriesQuery } from '#lib/medusa/catalog.remote.js';
+	import { toCatalogProduct, formatPrice, previewMedia, PRODUCT_FIELDS, type CatalogProduct } from '#lib/medusa/catalog.js';
+	import ProductMedia from '#lib/components/ProductMedia.svelte';
+	import FilterChip from '#lib/components/FilterChip.svelte';
+	import EmptyFilterState from '#lib/components/EmptyFilterState.svelte';
 	import {
 		applyFilters,
 		filterOptions,
@@ -24,11 +24,11 @@
 		SORTS,
 		type Filters,
 		type SortKey
-	} from '$lib/medusa/filters';
-	import { safe } from '$lib/medusa/safe';
-	import { site, photos } from '$lib/site';
+	} from '#lib/medusa/filters.js';
+	import { safe } from '#lib/medusa/safe.js';
+	import { site, photos } from '#lib/site.js';
 	import { dev } from '$app/env';
-	import { Metadata } from '$lib/components/ui/seo';
+	import { Metadata } from '#lib/components/ui/seo/index.js';
 
 	// Live catalog from Medusa. Awaiting inside `$derived` works because
 	// `compilerOptions.experimental.async` is enabled in vite.config.ts. There is deliberately no

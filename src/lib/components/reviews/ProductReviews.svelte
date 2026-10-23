@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { t, formatDate } from '$lib/i18n';
+	import { t, formatDate } from '#lib/i18n/index.js';
 	// The reviews section of a product page: rating summary, the reviews, and, for customers who bought
 	// and received the piece, a form to write one. Data comes from the product-reviews plugin in Medusa.
-	import { getProductReviews, getReviewableItems } from '$lib/medusa/reviews.remote';
-	import { formatAverage, type ReviewStats } from '$lib/medusa/reviews';
-	import { safe } from '$lib/medusa/safe';
-	import { site } from '$lib/site';
+	import { getProductReviews, getReviewableItems } from '#lib/medusa/reviews.remote.js';
+	import { formatAverage, type ReviewStats } from '#lib/medusa/reviews.js';
+	import { safe } from '#lib/medusa/safe.js';
+	import { site } from '#lib/site.js';
 	import { dev } from '$app/env';
 	import StarRating from './StarRating.svelte';
 	import ReviewForm from './ReviewForm.svelte';

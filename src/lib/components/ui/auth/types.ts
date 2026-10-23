@@ -1,13 +1,12 @@
-import type { RemoteForm, RemoteFormField } from '@sveltejs/kit'
+import type { RemoteForm, RemoteFormField } from '$app/server';
 
 // Mirrors the SDK's AuthResult (auth.remote.ts). Codes vary by form.
 export type AuthResult = { ok: boolean; code?: string }
 
-export type AuthMessages = Record<string, string>
+export type AuthMessages = Record<string, string>;
+export type AuthForm = RemoteForm<any, AuthResult>;
 
-export type AuthForm = RemoteForm<any, AuthResult>
-
-export type AuthFormContext = {
+export type AuthFormContext = { 
 	readonly form: AuthForm
 	readonly error: string
 	readonly submitting: boolean

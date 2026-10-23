@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { t, l } from '$lib/i18n';
+	import { t, l } from '#lib/i18n/index.js';
 	// The size guide pop-up: how to measure, and the shop's own size chart (from `site.sizeChart`).
 	// Until a chart is filled in there, no table is shown: customers are asked to write instead of
 	// being given numbers nobody confirmed.
 	import X from '@lucide/svelte/icons/x';
-	import { site } from '$lib/site';
+	import { site } from '#lib/site.js';
 
 	interface Props {
 		isOpen: boolean;

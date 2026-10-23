@@ -5,7 +5,7 @@
 	// Videos play like the autoplay clips on fashion sites: muted, looping, inline. They only
 	// run while on screen (a grid of clips would otherwise all decode at once), and visitors who
 	// ask their device for reduced motion get a still first frame with controls instead.
-	import { isVideoUrl } from '$lib/medusa/catalog';
+	import { isVideoUrl } from '#lib/medusa/catalog.js';
 
 	interface Props {
 		src?: string | null;

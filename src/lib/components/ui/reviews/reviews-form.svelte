@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte'
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	import { reviewForm } from 'sveltekit-medusa-sdk/reviews'
 	import { getReviewsContext } from './reviews-ctx.svelte.js'
 	import { createReviewForm } from './create-review-form.svelte.js'

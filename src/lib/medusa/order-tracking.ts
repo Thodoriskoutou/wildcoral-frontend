@@ -1,4 +1,4 @@
-import { t, formatDate } from '$lib/i18n'
+import { t, formatDate } from '#lib/i18n/index.js'
 /**
  * Turns a Medusa order into the plain shape the account pages draw: a status, a five-step
  * progress line, the items, the delivery address and any tracking numbers.

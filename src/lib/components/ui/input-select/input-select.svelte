@@ -2,11 +2,13 @@
 	export type SelectOption = { value: string; label: string }
 </script>
 
-<script lang="ts">
-	import type { RemoteFormField } from '@sveltejs/kit'
-	import * as Field from '$lib/components/ui/field/index.js'
-	import { cn } from '$lib/utils.js'
-	import ChevronDown from '@lucide/svelte/icons/chevron-down'
+<script
+	lang="ts"
+>
+	import type { RemoteFormField } from '$app/server';
+	import * as Field from '#lib/components/ui/field/index.js';
+	import { cn } from '#lib/utils.js';
+	import ChevronDown from '@lucide/svelte/icons/chevron-down';
 
 	interface Props {
 		field: RemoteFormField<any>
@@ -37,9 +39,21 @@
 	<div class="relative">
 		<!-- `.as('select')` binds via a value getter/setter (no event handler), so `onchange` is
 		     additive and does not clobber the form binding. -->
-		<select id={name} {...field.as('select')} {onchange} class={cn(selectClass, className)} {...rest}>
-			{#if placeholder}<option value="" disabled>{placeholder}</option>{/if}
-			{#each options as opt (opt.value)}<option value={opt.value}>{opt.label}</option>{/each}
+
+		<select
+			id={name}
+			{...field.as('select')}
+			onchange={onchange}
+			class={cn(selectClass, className)}
+			{...rest}
+		>
+			{#if placeholder}
+				<option value="" disabled>{placeholder}</option>
+			{/if}
+
+			{#each options as opt (opt.value)}
+				<option value={opt.value}>{opt.label}</option>
+			{/each}
 		</select>
 		<ChevronDown class="pointer-events-none absolute top-1/2 right-2.5 size-4 -translate-y-1/2 opacity-50" />
 	</div>

@@ -4,7 +4,7 @@
 	// the field IFRAMES via the `styles` pass-through. The inner card component tokenizes via context.
 	import { onMount, type Snippet } from 'svelte'
 	import { HostedFields } from 'sveltekit-braintree'
-	import { initiateBraintreePaymentSession } from 'sveltekit-medusa-sdk'
+	import { initiateBraintreePaymentSession } from 'sveltekit-medusa-sdk/braintree'
 	import { getBraintreeClientToken } from './checkout-logic.js'
 	import { domCssVarResolver, resolveInputSurface } from './stripe-appearance.js'
 

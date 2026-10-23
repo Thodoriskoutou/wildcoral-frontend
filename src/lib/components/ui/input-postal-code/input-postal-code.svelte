@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { RemoteFormField } from '@sveltejs/kit'
-	import InputText from '../input-text/input-text.svelte'
+	import type { RemoteFormField } from '$app/server';
+	import InputText from '../input-text/input-text.svelte';
 
 	interface Props {
 		field: RemoteFormField<any>
@@ -22,4 +22,12 @@
 	}
 </script>
 
-<InputText {field} {label} {placeholder} class={className} {oninput} {onchange} {...rest} />
+<InputText
+	field={field}
+	label={label}
+	placeholder={placeholder}
+	class={className}
+	oninput={oninput}
+	onchange={onchange}
+	{...rest}
+/>

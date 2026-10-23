@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { t, l, localized } from '$lib/i18n';
+	import { t, l, localized } from '#lib/i18n/index.js';
 	import ChevronDown from '@lucide/svelte/icons/chevron-down';
 	import Mail from '@lucide/svelte/icons/mail';
 	import Clock from '@lucide/svelte/icons/clock';
-	import { site } from '$lib/site';
+	import { site } from '#lib/site.js';
 
 	const contactHref = site.contactEmail ? `mailto:${site.contactEmail}` : null;
 

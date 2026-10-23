@@ -1,4 +1,4 @@
-import { msg, t } from '$lib/i18n'
+import { msg, t } from '#lib/i18n/index.js'
 import type { ReviewFormMessages } from './review-form-ctx.svelte.js'
 
 export type { ReviewFormMessages } from './review-form-ctx.svelte.js'

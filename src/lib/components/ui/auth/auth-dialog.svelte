@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
+	import { t } from '#lib/i18n/index.js';
 	import { goto } from '$app/navigation'
 	import { page } from '$app/state'
-	import * as Dialog from '$lib/components/ui/dialog/index.js'
+	import * as Dialog from '#lib/components/ui/dialog/index.js'
 	import LoginForm from './login-form.svelte'
 	import RegisterForm from './register-form.svelte'
 	import ForgotForm from './forgot-form.svelte'

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
-	import { cn } from '$lib/utils.js'
+	import { t } from '#lib/i18n/index.js';
+	import { cn } from '#lib/utils.js'
 	import { getReviewsContext } from './reviews-ctx.svelte.js'
 	const ctx = getReviewsContext()
 	let { class: className = '' }: { class?: string } = $props()

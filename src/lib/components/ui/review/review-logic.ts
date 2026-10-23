@@ -1,4 +1,4 @@
-import { formatLocale } from '$lib/i18n'
+import { formatLocale } from '#lib/i18n/index.js'
 // Pure presentational rating/date math for the `review` atom. No Svelte, unit-testable.
 
 /** 5 fill values (0 | 0.5 | 1) for an average, snapped to the nearest half star. */

@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { t } from '$lib/i18n'
-	import type { RemoteFormField } from '@sveltejs/kit'
-	import * as Field from '$lib/components/ui/field/index.js'
-	import { cn } from '$lib/utils.js'
-	import Eye from '@lucide/svelte/icons/eye'
-	import EyeOff from '@lucide/svelte/icons/eye-off'
+	import type { RemoteFormField } from '$app/server';
+	import { t } from '#lib/i18n/index.js';
+	import * as Field from '#lib/components/ui/field/index.js';
+	import { cn } from '#lib/utils.js';
+	import Eye from '@lucide/svelte/icons/eye';
+	import EyeOff from '@lucide/svelte/icons/eye-off';
 
 	interface Props {
 		field: RemoteFormField<any>
@@ -18,13 +18,12 @@
 	let { field, label = '', type = 'text', reveal = $bindable(false), description = '', class: className = '', ...rest }: Props = $props()
 
 	// shadcn Input / Textarea class strings (copied verbatim from laroastingco InputText.svelte).
-	const inputClass =
-		'border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 h-9 w-full min-w-0 rounded-md border bg-transparent px-2.5 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm'
-	const textareaClass =
-		'border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 field-sizing-content min-h-16 w-full rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm'
+	const inputClass = 'border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 h-9 w-full min-w-0 rounded-md border bg-transparent px-2.5 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm';
 
-	const issues = $derived(field.issues())
-	const invalid = $derived(issues && issues.length > 0 ? 'true' : undefined)
+	const textareaClass = 'border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 field-sizing-content min-h-16 w-full rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm';
+	const issues = $derived(field.issues());
+	const invalid = $derived(issues && issues.length > 0 ? 'true' : undefined);
+
 	// `name` is type-independent, so 'text' just fetches a stable id for label association.
 	const name = $derived(field.as('text').name)
 </script>
@@ -41,7 +40,7 @@
 				tabindex={-1}
 				class="absolute inset-y-0 right-0 flex items-center pr-3 text-muted-foreground"
 				aria-label={reveal ? t('Hide') : t('Show')}
-				onclick={() => (reveal = !reveal)}
+				onclick={() => reveal = !reveal}
 			>
 				{#if reveal}<EyeOff class="size-4" />{:else}<Eye class="size-4" />{/if}
 			</button>

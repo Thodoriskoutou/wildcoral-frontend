@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as Field from '$lib/components/ui/field/index.js'
-	import { cn } from '$lib/utils.js'
+	import * as Field from '#lib/components/ui/field/index.js'
+	import { cn } from '#lib/utils.js'
 	import { getAuthFieldContextOptional, getAuthFormContextOptional } from './ctx.svelte.js'
 	let { class: className = '' }: { class?: string } = $props()
 	const fieldCtx = getAuthFieldContextOptional()

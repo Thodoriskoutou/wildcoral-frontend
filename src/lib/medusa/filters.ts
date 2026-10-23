@@ -1,4 +1,4 @@
-import { msg } from '$lib/i18n'
+import { msg } from '#lib/i18n/index.js'
 /**
  * The shop's filters and sorting, as plain functions over the catalog (no SvelteKit imports).
  *

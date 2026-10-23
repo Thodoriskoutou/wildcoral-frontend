@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t, l, localized } from '$lib/i18n';
+	import { t, l, localized } from '#lib/i18n/index.js';
 	// Contact: how to reach the shop. Contact details come from src/lib/site.ts; the message form is shown
 	// only when messages can really be delivered (an email service is set up, see src/env.ts), so a visitor
 	// never writes a message that goes nowhere.
@@ -10,13 +10,13 @@
 	import CircleCheck from '@lucide/svelte/icons/circle-check';
 	import { page } from '$app/state';
 	import { dev } from '$app/env';
-	import { getCustomer } from 'sveltekit-medusa-sdk';
-	import { Metadata } from '$lib/components/ui/seo';
-	import SocialIcon, { type SocialNetwork } from '$lib/components/icons/SocialIcon.svelte';
-	import { site } from '$lib/site';
-	import { TOPICS, isTopic } from '$lib/contact';
-	import { getContactMode, sendContactMessage } from '$lib/contact.remote';
-	import { safe } from '$lib/medusa/safe';
+	import { getCustomer } from 'sveltekit-medusa-sdk/customer';
+	import { Metadata } from '#lib/components/ui/seo/index.js';
+	import SocialIcon, { type SocialNetwork } from '#lib/components/icons/SocialIcon.svelte';
+	import { site } from '#lib/site.js';
+	import { TOPICS, isTopic } from '#lib/contact.js';
+	import { getContactMode, sendContactMessage } from '#lib/contact.remote.js';
+	import { safe } from '#lib/medusa/safe.js';
 
 	const labelClass = 'text-xs tracking-[0.2em] uppercase block mb-2 text-gray-700';
 	const inputClass =

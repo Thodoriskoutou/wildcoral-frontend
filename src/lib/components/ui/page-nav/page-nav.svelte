@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
-	import { cn } from '$lib/utils.js'
+	import { t } from '#lib/i18n/index.js';
+	import { cn } from '#lib/utils.js'
 	import { setPageNavContext } from './page-nav-ctx.svelte.js'
 	import Prev from './page-nav-prev.svelte'
 	import Pages from './page-nav-pages.svelte'

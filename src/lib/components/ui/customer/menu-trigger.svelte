@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
-	import { cn } from '$lib/utils.js'
-	import { buttonVariants, type ButtonSize, type ButtonVariant } from '$lib/components/ui/button/index.js'
-	import { DropdownMenuTrigger } from '$lib/components/ui/dropdown-menu/index.js'
+	import { t } from '#lib/i18n/index.js';
+	import { cn } from '#lib/utils.js'
+	import { buttonVariants, type ButtonSize, type ButtonVariant } from '#lib/components/ui/button/index.js'
+	import { DropdownMenuTrigger } from '#lib/components/ui/dropdown-menu/index.js'
 	import type { Snippet } from 'svelte'
 
 	let {

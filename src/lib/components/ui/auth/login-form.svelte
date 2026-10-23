@@ -2,7 +2,7 @@
 	import type { Snippet } from 'svelte'
 	import { login } from 'sveltekit-medusa-sdk/auth'
 	import { getCustomer } from 'sveltekit-medusa-sdk/customer'
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	import { createAuthForm } from './create-auth-form.svelte.js'
 	import { loginMessages } from './auth-messages.js'
 	import type { AuthMessages, AuthResult } from './types.js'

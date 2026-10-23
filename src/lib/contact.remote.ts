@@ -1,9 +1,9 @@
-import { msg } from '$lib/i18n'
+import { msg } from '#lib/i18n/index.js'
 import { form, getRequestEvent, query } from '$app/server';
 import * as v from 'valibot';
 import { RESEND_API_KEY, CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL, RESEND_API_URL } from '$app/env/private';
-import { site } from '$lib/site';
-import { TOPICS, type Topic } from '$lib/contact';
+import { site } from '#lib/site.js';
+import { TOPICS, type Topic } from '#lib/contact.js';
 
 /**
  * The contact form on /contact. A message is emailed to the shop through Resend (resend.com), using the

@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { t, l } from '$lib/i18n';
-	import { Metadata } from '$lib/components/ui/seo';
+	import { t, l } from '#lib/i18n/index.js';
+	import { Metadata } from '#lib/components/ui/seo/index.js';
 	import Plus from '@lucide/svelte/icons/plus';
 	import X from '@lucide/svelte/icons/x';
-	import { getProductsQuery, getProductQuery } from 'sveltekit-medusa-sdk';
-	import { toCatalogProduct, formatPrice, PRODUCT_FIELDS } from '$lib/medusa/catalog';
-	import { safe } from '$lib/medusa/safe';
-	import { site, photos } from '$lib/site';
-	import ProductMedia from '$lib/components/ProductMedia.svelte';
+	import { getProductsQuery, getProductQuery } from '#lib/medusa/catalog.remote.js';
+	import { toCatalogProduct, formatPrice, PRODUCT_FIELDS } from '#lib/medusa/catalog.js';
+	import { safe } from '#lib/medusa/safe.js';
+	import { site, photos } from '#lib/site.js';
+	import ProductMedia from '#lib/components/ProductMedia.svelte';
 
 	// Newest products first, plus the products the "Shop the Look" markers point at. If Medusa is
 	// unreachable the product sections simply don't render, so the editorial parts still load.

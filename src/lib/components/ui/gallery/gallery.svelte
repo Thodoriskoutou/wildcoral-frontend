@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { cn } from '$lib/utils.js'
-	import * as ImageZoom from '$lib/components/ui/image-zoom'
+	import { cn } from '#lib/utils.js'
+	import * as ImageZoom from '#lib/components/ui/image-zoom/index.js'
 	import {
 		GalleryState,
 		setGalleryContext,
@@ -9,7 +9,7 @@
 		type ThumbnailPosition,
 		type ThumbnailBreakpoint
 	} from './ctx.svelte.js'
-	import type { CarouselAPI } from '$lib/components/ui/carousel/context.js'
+	import type { CarouselAPI } from '#lib/components/ui/carousel/context.js'
 	import type { EmblaOptionsType, EmblaPluginType } from 'embla-carousel'
 	import type { Snippet } from 'svelte'
 

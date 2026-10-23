@@ -1,5 +1,5 @@
 <script lang="ts">
-	import * as Sheet from '$lib/components/ui/sheet/index.js'
+	import * as Sheet from '#lib/components/ui/sheet/index.js'
 	import { setCartSheetContext } from './ctx.svelte.js'
 	import type { Snippet } from 'svelte'
 

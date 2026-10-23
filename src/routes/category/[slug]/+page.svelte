@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { t, l } from '$lib/i18n';
+	import { t, l } from '#lib/i18n/index.js';
 	// Category listing.
 	//
 	// `Products.Root` filters by category *id*, not handle, so the category is resolved
 	// from the URL slug first. Same shape as /collection/[slug].
 	import { page } from '$app/state'
-	import { getProductCategoryQuery } from 'sveltekit-medusa-sdk'
-	import * as Products from '$lib/components/ui/products'
-	import { Metadata } from '$lib/components/ui/seo'
+	import { getProductCategoryQuery } from '#lib/medusa/catalog.remote.js'
+	import * as Products from '#lib/components/ui/products/index.js'
+	import { Metadata } from '#lib/components/ui/seo/index.js'
 
 	// The Query variant (not the cached prerender one): the category's name depends on the visitor's language
 	const category = $derived(await getProductCategoryQuery({ slug: page.params.slug }))

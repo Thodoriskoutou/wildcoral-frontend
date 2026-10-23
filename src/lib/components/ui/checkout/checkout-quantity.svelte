@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
-	import { cn } from '$lib/utils.js'
-	import { Button } from '$lib/components/ui/button/index.js'
+	import { t } from '#lib/i18n/index.js';
+	import { cn } from '#lib/utils.js'
+	import { Button } from '#lib/components/ui/button/index.js'
 	import MinusIcon from '@lucide/svelte/icons/minus'
 	import PlusIcon from '@lucide/svelte/icons/plus'
 	import { getCheckoutContext, getCheckoutLineContext } from './ctx.svelte.js'

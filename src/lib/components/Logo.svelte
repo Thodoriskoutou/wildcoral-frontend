@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
-	import logoBlack from '$lib/assets/logo-black.png';
-	import logoWhite from '$lib/assets/logo-white.png';
+	import { t } from '#lib/i18n/index.js';
+	import logoBlack from '#lib/assets/logo-black.png';
+	import logoWhite from '#lib/assets/logo-white.png';
 
 	interface Props {
 		variant?: 'normal' | 'reverse';

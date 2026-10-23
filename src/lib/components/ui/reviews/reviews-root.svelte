@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	// Import review remotes from the /reviews subpath: svelte-check cannot resolve them
 	// through the package barrel (the SDK's ./* export maps this straight to reviews.remote).
 	import { getReviewSummary, getReviews } from 'sveltekit-medusa-sdk/reviews'

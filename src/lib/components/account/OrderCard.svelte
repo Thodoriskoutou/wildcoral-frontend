@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { t, l, formatDate } from '$lib/i18n';
+	import { t, l, formatDate } from '#lib/i18n/index.js';
 	// One order in the account's order list: number, date, total, status and item thumbnails.
 	// The whole card opens the order's tracking page.
 	import ArrowRight from '@lucide/svelte/icons/arrow-right';
-	import { formatPrice } from '$lib/medusa/catalog';
-	import type { OrderView } from '$lib/medusa/order-tracking';
-	import ProductMedia from '$lib/components/ProductMedia.svelte';
+	import { formatPrice } from '#lib/medusa/catalog.js';
+	import type { OrderView } from '#lib/medusa/order-tracking.js';
+	import ProductMedia from '#lib/components/ProductMedia.svelte';
 	import OrderStatusBadge from './OrderStatusBadge.svelte';
 
 	let { order, href }: { order: OrderView; href?: string } = $props();

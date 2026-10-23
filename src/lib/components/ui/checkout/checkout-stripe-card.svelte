@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
+	import { t } from '#lib/i18n/index.js';
 	// elements:false CARD payment: split card fields (CardNumber/CardExpiry/CardCvc) + confirmCardPayment
 	// (inline, no redirect). Renders only inside <StripeElements>. Registers the place-order payment step.
 	import { onMount } from 'svelte'
 	import { CardNumber, CardExpiry, CardCvc, getStripeContext, confirmCardPayment } from 'sveltekit-stripe'
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	import { getCheckoutContextOptional } from './ctx.svelte.js'
 	import { getStripeSessionContext } from './stripe-cs-context.js'
 	import { cartBillingDetails } from './checkout-logic.js'

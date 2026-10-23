@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as Carousel from '$lib/components/ui/carousel/index.js'
-	import { cn } from '$lib/utils.js'
+	import * as Carousel from '#lib/components/ui/carousel/index.js'
+	import { cn } from '#lib/utils.js'
 	import { getReviewsContextOptional } from './reviews-ctx.svelte.js'
 	import Item from '../review/review-item.svelte'
 	import type { StoreReview } from '../review/review-types.js'

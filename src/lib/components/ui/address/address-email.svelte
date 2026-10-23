@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t } from '$lib/i18n'
+	import { t } from '#lib/i18n/index.js'
 	import InputText from '../input-text/input-text.svelte'
 	import { getAddressContext } from './ctx.svelte.js'
 	let { label = t('Email address'), class: className = '', ...rest }: { label?: string; class?: string; [k: string]: unknown } = $props()

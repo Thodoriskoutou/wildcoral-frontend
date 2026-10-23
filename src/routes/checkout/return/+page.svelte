@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { t } from '$lib/i18n'
+	import { t } from '#lib/i18n/index.js'
 	// Stripe redirects here after payment. `Return` reads the redirect result, completes
 	// the cart, and then navigates on. It is standalone — not inside Checkout.Root.
 	//
 	// Point STRIPE_REDIRECT_URL at this route's absolute URL.
 	import { STRIPE_KEY } from '$app/env/public'
-	import { Return } from '$lib/components/ui/checkout'
-	import { Metadata } from '$lib/components/ui/seo'
-	import { rememberOrder } from '$lib/medusa/order-summary'
+	import { Return } from '#lib/components/ui/checkout/index.js'
+	import { Metadata } from '#lib/components/ui/seo/index.js'
+	import { rememberOrder } from '#lib/medusa/order-summary.js'
 </script>
 
 <Metadata config={{ title: t('Order confirmation'), noindex: true }} />

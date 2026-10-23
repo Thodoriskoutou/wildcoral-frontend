@@ -1,5 +1,5 @@
 import type { MedusaContext } from 'sveltekit-medusa-sdk'
-import type { Locale } from '$lib/i18n'
+import type { Locale } from '#lib/i18n/index.js'
 
 declare global {
 	namespace App {

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	import { getAddressContext } from './ctx.svelte.js'
 	import FirstName from './address-first-name.svelte'
 	import LastName from './address-last-name.svelte'

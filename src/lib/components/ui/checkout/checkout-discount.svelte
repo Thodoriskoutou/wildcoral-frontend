@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
-	import { cn } from '$lib/utils.js'
+	import { t } from '#lib/i18n/index.js';
+	import { cn } from '#lib/utils.js'
 	import { getCheckoutContext } from './ctx.svelte.js'
 	let { class: className = '', placeholder = t('Discount code') }: { class?: string; placeholder?: string } = $props()
 	const ctx = getCheckoutContext()

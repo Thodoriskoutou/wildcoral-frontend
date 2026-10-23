@@ -1,7 +1,7 @@
-import type { RemoteForm, RemoteFormInput } from '@sveltejs/kit'
-import { setAuthFormContext } from './ctx.svelte.js'
-import { resolveMessage } from './auth-messages.js'
-import type { AuthForm, AuthMessages, AuthResult } from './types.js'
+import type { RemoteForm, RemoteFormInput } from '$app/server';
+import { setAuthFormContext } from './ctx.svelte.js';
+import { resolveMessage } from './auth-messages.js';
+import type { AuthForm, AuthMessages, AuthResult } from './types.js';
 
 export interface CreateAuthFormOptions<Input extends RemoteFormInput | void> {
 	/** The SDK remote form this component drives (e.g. `login`, `register`). */
@@ -40,8 +40,8 @@ export function createAuthForm<Input extends RemoteFormInput | void>(options: ()
 		get messages() {
 			return options().messages
 		},
-		switchMode: m => options().onswitch?.(m)
-	})
+		switchMode: (m) => options().onswitch?.(m)
+	});
 
 	const enhanced = options().form.enhance(async ({ submit }) => {
 		error = ''

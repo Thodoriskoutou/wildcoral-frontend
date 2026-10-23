@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { t } from '$lib/i18n'
+	import { t } from '#lib/i18n/index.js'
 	// Reads the cart asynchronously (`experimental.async`, `$derived(await getCart())`) and wraps its
 	// own render in a `<svelte:boundary>`, so it suspends on its own while the cart loads — consumers
 	// don't need an external boundary. Awaiting a query stays reactive (re-runs on refresh), and
 	// resolves straight to `StoreCart | null`.
-	import { cn } from '$lib/utils.js'
-	import { getProductContextOptional } from '$lib/components/ui/product/ctx.svelte.js'
-	import { addToCart, removeFromCart, getCart } from 'sveltekit-medusa-sdk'
+	import { cn } from '#lib/utils.js'
+	import { getProductContextOptional } from '#lib/components/ui/product/ctx.svelte.js'
+import { addToCart, removeFromCart, getCart } from 'sveltekit-medusa-sdk/cart'
 	import { resolveVariantId, findCartLine, cartSatisfiesCondition } from './add-to-cart-logic.js'
 	import type { CartCondition } from './types.js'
 	import type { StoreCart } from '@medusajs/types'

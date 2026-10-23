@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { formatLocale } from '$lib/i18n'
-	import { cn } from '$lib/utils.js'
+	import { formatLocale } from '#lib/i18n/index.js'
+	import { cn } from '#lib/utils.js'
 	import { getReviewItemContextOptional } from './reviews-item-ctx.svelte.js'
 	import { formatReviewDate } from './review-logic.js'
 	let { class: className = '', locale = formatLocale() }: { class?: string; locale?: string } = $props()

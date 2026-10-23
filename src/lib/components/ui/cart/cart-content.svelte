@@ -1,8 +1,8 @@
 <script lang="ts">
 	// Sheet.Content with cart-drawer sizing baked in. Belongs inside <Cart.Sheet>.
 	// Override the width/padding wholesale via `class` — the defaults are plain utilities.
-	import { cn } from '$lib/utils.js'
-	import * as Sheet from '$lib/components/ui/sheet/index.js'
+	import { cn } from '#lib/utils.js'
+	import * as Sheet from '#lib/components/ui/sheet/index.js'
 	import type { ComponentProps, Snippet } from 'svelte'
 
 	let {

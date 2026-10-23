@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
-	import * as Dialog from '$lib/components/ui/dialog/index.js'
+	import { t } from '#lib/i18n/index.js';
+	import * as Dialog from '#lib/components/ui/dialog/index.js'
 	import * as Search from './index.js'
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	import type { SearchHit } from './ctx.svelte.js'
 	import type { Snippet } from 'svelte'
 

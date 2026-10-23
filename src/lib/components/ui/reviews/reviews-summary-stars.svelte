@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	import { getReviewsContext } from './reviews-ctx.svelte.js'
 	import { averageToStarFills } from '../review/review-logic.js'
 	import Star from '../review/star.svelte'

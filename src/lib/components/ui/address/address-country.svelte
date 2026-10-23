@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t } from '$lib/i18n'
+	import { t } from '#lib/i18n/index.js'
 	import InputSelectCountry from '../input-select-country/input-select-country.svelte'
 	import { getAddressContext } from './ctx.svelte.js'
 	let {

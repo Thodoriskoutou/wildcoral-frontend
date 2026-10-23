@@ -1,4 +1,4 @@
-import { formatLocale } from '$lib/i18n'
+import { formatLocale } from '#lib/i18n/index.js'
 import type { StoreProduct, StoreProductVariant } from '@medusajs/types';
 
 /**

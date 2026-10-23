@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { untrack } from 'svelte'
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	import { SearchState, setSearchContext } from './ctx.svelte.js'
 	import type { Snippet } from 'svelte'
 

@@ -1,5 +1,5 @@
-import type { Locale } from '$lib/i18n/config';
-import type { Localized } from '$lib/i18n/localized';
+import type { Locale } from '#lib/i18n/config.js';
+import type { Localized } from '#lib/i18n/localized.js';
 
 /**
  * Store-owner settings that aren't in Medusa. Fill these in and the matching parts of the site

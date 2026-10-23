@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { l } from '$lib/i18n';
-	import { cn } from '$lib/utils.js'
+	import { l } from '#lib/i18n/index.js';
+	import { cn } from '#lib/utils.js'
 	import { getCheckoutLineContext } from './ctx.svelte.js'
 	let { class: className = '', href = '#' }: { class?: string; href?: string } = $props()
 	const { item } = getCheckoutLineContext()

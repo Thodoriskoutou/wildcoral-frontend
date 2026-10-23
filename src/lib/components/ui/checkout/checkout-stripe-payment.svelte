@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { t } from '$lib/i18n'
+	import { t } from '#lib/i18n/index.js'
 	import { onMount } from 'svelte'
 	// Static imports (browser-only SDK — see the Braintree lesson). This component is NOT unit-tested;
 	// it only renders inside a Stripe <Elements> boundary (see checkout-stripe-elements.svelte).
 	import { PaymentElement, getStripeContext } from 'sveltekit-stripe'
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	import { getCheckoutContextOptional } from './ctx.svelte.js'
 	import { getStripeSessionContext } from './stripe-cs-context.js'
 

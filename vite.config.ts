@@ -25,11 +25,6 @@ export default defineConfig({
 			experimental: {
 				remoteFunctions: true
 			},
-			// `$lib` is not built into SvelteKit 3 — it only exists because of this alias.
-			// Registry-installed components reference `$lib/components/ui/*`, so keep it.
-			alias: {
-				$lib: 'src/lib'
-			},
 			prerender: {
 				handleHttpError: 'warn'
 			}

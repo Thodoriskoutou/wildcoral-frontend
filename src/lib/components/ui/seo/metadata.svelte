@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state'
-	import { defaultLocale, formatLocale, getLocale, locales, localizePath, pathOf } from '$lib/i18n'
+	import { defaultLocale, formatLocale, getLocale, locales, localizePath, pathOf } from '#lib/i18n/index.js'
 	import { getSiteMetaContextOptional } from './ctx.svelte.js'
 	import type { MetaConfig } from './types.js'
 

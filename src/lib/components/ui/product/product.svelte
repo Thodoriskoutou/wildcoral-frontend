@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	import { createProductContext, setProductContext } from './ctx.svelte.js'
 	import type { StoreProduct } from '@medusajs/types'
 	import type { Snippet } from 'svelte'
