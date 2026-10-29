@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { t, l, getLocale } from '$lib/i18n';
+	import { t, l, getLocale } from '#lib/i18n/index.js';
 	import { page } from '$app/state';
 	import ChevronDown from '@lucide/svelte/icons/chevron-down';
 	import ChevronLeft from '@lucide/svelte/icons/chevron-left';
-	import { getProductQuery, getProductsQuery, addToCart } from 'sveltekit-medusa-sdk';
+	import { addToCart } from 'sveltekit-medusa-sdk/cart';
+	import { getProductQuery, getProductsQuery } from '#lib/medusa/catalog.remote.js';
 	import {
 		toCatalogProduct,
 		findVariant,
@@ -12,20 +13,20 @@
 		mediaForSelection,
 		previewMedia,
 		PRODUCT_FIELDS
-	} from '$lib/medusa/catalog';
-	import { safe } from '$lib/medusa/safe';
-	import { site, photos } from '$lib/site';
+	} from '#lib/medusa/catalog.js';
+	import { safe } from '#lib/medusa/safe.js';
+	import { site, photos } from '#lib/site.js';
 	import { dev } from '$app/env';
-	import ProductMedia from '$lib/components/ProductMedia.svelte';
-	import SizeChartModal from '$lib/components/SizeChartModal.svelte';
-	import StockBadge from '$lib/components/StockBadge.svelte';
-	import WishlistButton from '$lib/components/WishlistButton.svelte';
-	import StarRating from '$lib/components/reviews/StarRating.svelte';
-	import ProductReviews from '$lib/components/reviews/ProductReviews.svelte';
-	import { getProductReviewStats } from '$lib/medusa/reviews.remote';
-	import { formatAverage, type ReviewStats } from '$lib/medusa/reviews';
-	import * as ProductParts from '$lib/components/ui/product';
-	import { Metadata } from '$lib/components/ui/seo';
+	import ProductMedia from '#lib/components/ProductMedia.svelte';
+	import SizeChartModal from '#lib/components/SizeChartModal.svelte';
+	import StockBadge from '#lib/components/StockBadge.svelte';
+	import WishlistButton from '#lib/components/WishlistButton.svelte';
+	import StarRating from '#lib/components/reviews/StarRating.svelte';
+	import ProductReviews from '#lib/components/reviews/ProductReviews.svelte';
+	import { getProductReviewStats } from '#lib/medusa/reviews.remote.js';
+	import { formatAverage, type ReviewStats } from '#lib/medusa/reviews.js';
+	import * as ProductParts from '#lib/components/ui/product/index.js';
+	import { Metadata } from '#lib/components/ui/seo/index.js';
 
 	// Live product from Medusa, looked up by its handle (`/product/{handle}`). `raw` is the
 	// untouched Medusa product, kept for the SEO structured data.

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { t, formatLocale } from '$lib/i18n'
-	import { cn } from '$lib/utils.js'
+	import { t, formatLocale } from '#lib/i18n/index.js'
+	import { cn } from '#lib/utils.js'
 	import { getCartContext } from './ctx.svelte.js'
 	import { formatPrice } from './format-price.js'
 	let { class: className = '', locale = formatLocale(), label = t('Subtotal') }: { class?: string; locale?: string; label?: string } = $props()

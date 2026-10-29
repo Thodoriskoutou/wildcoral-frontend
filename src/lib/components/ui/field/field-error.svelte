@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { t } from '$lib/i18n'
-	import { cn, type WithElementRef } from "$lib/utils.js";
+	import { t } from '#lib/i18n/index.js'
+	import { cn, type WithElementRef } from "#lib/utils.js";
 	import type { Snippet } from "svelte";
 	import type { HTMLAttributes } from "svelte/elements";
 

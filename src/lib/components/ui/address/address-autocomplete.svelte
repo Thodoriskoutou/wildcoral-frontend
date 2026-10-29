@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { t } from '$lib/i18n'
+	import { t } from '#lib/i18n/index.js'
 	import GooglePlacesAutocomplete from '../google-places-autocomplete/google-places-autocomplete.svelte'
 	import InputText from '../input-text/input-text.svelte'
-	import * as Field from '$lib/components/ui/field/index.js'
+	import * as Field from '#lib/components/ui/field/index.js'
 	import { getAddressContext } from './ctx.svelte.js'
 	import type { NormalizedAddress } from '../google-places-autocomplete/types'
 

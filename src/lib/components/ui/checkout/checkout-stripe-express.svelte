@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t } from '$lib/i18n'
+	import { t } from '#lib/i18n/index.js'
 	// Express Checkout (Apple/Google Pay/Link) for the elements:false CARD path — rendered ABOVE the
 	// address as a one-tap express path. REGION-LOCKED: the wallet's shipping countries + rates come from
 	// the cart's CURRENT region (Medusa options); the wallet can't swap regions (document in site flow).
@@ -13,7 +13,8 @@
 	import { goto } from '$app/navigation'
 	import type { StoreOrder } from '@medusajs/types'
 	import { ExpressCheckout, getStripeContext } from 'sveltekit-stripe'
-	import { updateCart, completeCart, getRegions, getShippingOptions } from 'sveltekit-medusa-sdk'
+	import { updateCart, completeCart, getShippingOptions } from 'sveltekit-medusa-sdk/cart'
+	import { getRegionsQuery } from '#lib/medusa/catalog.remote.js'
 	import { getCheckoutContext } from './ctx.svelte.js'
 	import { getStripeSessionContext } from './stripe-cs-context.js'
 	import { medusaShippingToStripeRates, walletAddressToMedusa, resolveRedirect } from './checkout-logic.js'
@@ -46,7 +47,7 @@
 
 	onMount(async () => {
 		try {
-			const regions = await getRegions()
+			const regions = await getRegionsQuery()
 			const region = (regions ?? []).find((r: any) => r.id === ctx.cart?.region_id)
 			allowedShippingCountries = (region?.countries ?? []).map((c: any) => String(c.iso_2).toUpperCase())
 		} catch {

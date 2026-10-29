@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
+	import { t } from '#lib/i18n/index.js';
 	// Redirect-return handler for redirect-based Stripe methods (iDEAL, Bancontact, giropay, Przelewy24).
 	// Drop this on the route your `returnUrl` points at. On return, Stripe has appended the PaymentIntent
 	// to the URL; we read its status and, if the payment authorized, complete the Medusa cart to create
@@ -9,8 +9,8 @@
 	import type { StoreOrder } from '@medusajs/types'
 	import { loadStripe } from '@stripe/stripe-js'
 	import { getRedirectResult } from 'sveltekit-stripe'
-	import { completeCart } from 'sveltekit-medusa-sdk'
-	import { cn } from '$lib/utils.js'
+import { completeCart } from 'sveltekit-medusa-sdk/cart'
+	import { cn } from '#lib/utils.js'
 	import { resolveRedirect } from './checkout-logic.js'
 
 	interface Props {

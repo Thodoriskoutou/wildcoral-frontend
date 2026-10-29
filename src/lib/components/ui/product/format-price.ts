@@ -1,4 +1,4 @@
-import { formatLocale } from '$lib/i18n'
+import { formatLocale } from '#lib/i18n/index.js'
 export type CalculatedPrice = {
 	calculated_amount?: number | null
 	original_amount?: number | null

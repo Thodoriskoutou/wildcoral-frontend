@@ -1,11 +1,12 @@
 <script lang="ts">
-	import type { RemoteForm } from '@sveltejs/kit'
-	import type { StoreOrder } from '@medusajs/types'
+	import type { RemoteForm } from '$app/server';
+	import type { StoreOrder } from '@medusajs/types';
 	// sveltekit-medusa-sdk@2.18.0 ships this generic address form as `braintreeCheckoutForm` (it is not
 	// Braintree-specific); newer registry code refers to it as `checkoutForm`.
-	import { braintreeCheckoutForm as checkoutForm } from 'sveltekit-medusa-sdk'
-	import Root from './checkout.svelte'
-	import Body from './checkout-braintree-body.svelte'
+	import { braintreeCheckoutForm as checkoutForm } from 'sveltekit-medusa-sdk/braintree';
+
+	import Root from './checkout.svelte';
+	import Body from './checkout-braintree-body.svelte';
 
 	interface Props {
 		form?: RemoteForm<any, any>
@@ -21,7 +22,11 @@
 </script>
 
 <form {...form}>
-	<Root {form} {...rest}>
-		<Body {form} {googlePlacesApiKey} {restrictToCurrentRegion} />
+	<Root form={form} {...rest}>
+		<Body
+			form={form}
+			googlePlacesApiKey={googlePlacesApiKey}
+			restrictToCurrentRegion={restrictToCurrentRegion}
+		/>
 	</Root>
 </form>

@@ -1,4 +1,4 @@
-import { formatLocale } from '$lib/i18n'
+import { formatLocale } from '#lib/i18n/index.js'
 // Medusa returns amounts in major units. `locale` is pinned (default 'en-US') so server + client
 // render identically (avoids a hydration mismatch from host-locale differences).
 export function formatPrice(amount: number | null | undefined, currencyCode: string | null | undefined, locale = formatLocale()): string {

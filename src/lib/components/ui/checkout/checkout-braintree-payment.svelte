@@ -1,12 +1,13 @@
 <script lang="ts">
-	import { t } from '$lib/i18n'
+	import { t } from '#lib/i18n/index.js'
 	// Braintree CARD fields (mirrors checkout-stripe-card). Renders INSIDE <HostedFields>
 	// (checkout-braintree-hosted-fields). Tokenizes the entered card on the place-order payment step via
 	// the sveltekit-braintree context; no direct braintree-web usage.
 	import { onMount } from 'svelte'
 	import { CardNumber, ExpirationDate, Cvv, getBraintreeContext, tokenizeCard } from 'sveltekit-braintree'
-	import { initiateBraintreePaymentSession, formatBraintreeAddress } from 'sveltekit-medusa-sdk'
-	import { cn } from '$lib/utils.js'
+import { initiateBraintreePaymentSession } from 'sveltekit-medusa-sdk/braintree'
+import { formatBraintreeAddress } from '#lib/medusa/braintree.js'
+	import { cn } from '#lib/utils.js'
 	import { getCheckoutContextOptional } from './ctx.svelte.js'
 	import { resolveInputSurface } from './stripe-appearance.js'
 

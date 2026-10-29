@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { t, l, formatDate } from '$lib/i18n';
+	import { t, l, formatDate } from '#lib/i18n/index.js';
 	// A whole order: status, progress line, tracking numbers, items, totals and delivery details.
 	// Used by /account/orders/[id] (real data) and /account/preview (sample data, dev only).
 	import ArrowLeft from '@lucide/svelte/icons/arrow-left';
 	import ExternalLink from '@lucide/svelte/icons/external-link';
 	import Gift from '@lucide/svelte/icons/gift';
 	import Leaf from '@lucide/svelte/icons/leaf';
-	import { site } from '$lib/site';
-	import { formatPrice } from '$lib/medusa/catalog';
-	import type { OrderView } from '$lib/medusa/order-tracking';
-	import ProductMedia from '$lib/components/ProductMedia.svelte';
+	import { site } from '#lib/site.js';
+	import { formatPrice } from '#lib/medusa/catalog.js';
+	import type { OrderView } from '#lib/medusa/order-tracking.js';
+	import ProductMedia from '#lib/components/ProductMedia.svelte';
 	import OrderStatusBadge from './OrderStatusBadge.svelte';
 	import OrderTimeline from './OrderTimeline.svelte';
 

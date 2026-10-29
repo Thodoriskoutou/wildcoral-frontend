@@ -1,9 +1,9 @@
-import { msg } from '$lib/i18n'
+import { msg } from '#lib/i18n/index.js'
 /**
  * The shop's filters and sorting, as plain functions over the catalog (no SvelteKit imports).
  *
  * The state lives in the page URL, so a filtered view can be bookmarked, shared, and survives the
- * back button:   /shop?category=bikinis&size=S,M&color=Gold&style=sequin&max=150&instock=1&sort=price-asc
+ * back button:   /category/bikinis?size=S,M&color=Gold&style=sequin&max=150&instock=1&sort=price-asc
  *
  * Rules: choices inside one group are alternatives (size S *or* M); different groups all have to hold
  * (size M *and* Gold *and* in stock). Colour, size, price and stock are checked on the same variant, so
@@ -44,7 +44,7 @@ const list = (value: string | null) =>
 		.map((s) => s.trim())
 		.filter(Boolean);
 
-/** Reads everything except the category (that one is a handle in the URL, resolved by the page). */
+/** Reads the query-string filters. The category comes from the route path. */
 export function parseFilters(params: { get(name: string): string | null }): Omit<Filters, 'category'> {
 	const max = Number(params.get('max'));
 	const sort = params.get('sort') as SortKey | null;
@@ -59,10 +59,11 @@ export function parseFilters(params: { get(name: string): string | null }): Omit
 }
 
 /** The URL (path + query) after changing some filters; defaults and empty choices are left out. */
-export function filtersHref(url: { pathname: string; search: string }, patch: Partial<Omit<Filters, 'category'>> & { categoryHandle?: string | null }): string {
+export function filtersHref(url: { pathname: string; search: string }, patch: Partial<Omit<Filters, 'category'>>): string {
 	const params = new URLSearchParams(url.search);
 	const set = (key: string, value: string | null) => (value ? params.set(key, value) : params.delete(key));
-	if ('categoryHandle' in patch) set('category', patch.categoryHandle ?? null);
+	// Legacy `?category=` is deliberately ignored: a category is always a path segment.
+	params.delete('category');
 	if ('sizes' in patch) set('size', patch.sizes?.join(',') ?? null);
 	if ('colors' in patch) set('color', patch.colors?.join(',') ?? null);
 	if ('styles' in patch) set('style', patch.styles?.join(',') ?? null);

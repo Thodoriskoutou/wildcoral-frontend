@@ -1,23 +1,23 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte'
-	import { goto } from '$app/navigation'
-	import type { RemoteForm } from '@sveltejs/kit'
-	import type { StoreCart, StoreOrder } from '@medusajs/types'
+	import type { RemoteForm } from '$app/server';
+	import type { Snippet } from 'svelte';
+	import { goto } from '$app/navigation';
+	import type { StoreCart, StoreOrder } from '@medusajs/types';
 	import {
 		getCart,
 		updateCartItem,
 		removeFromCart,
 		getShippingOptions,
 		selectShippingOption,
-		addPromotion,
-		removePromotion,
 		completeCart
-	} from 'sveltekit-medusa-sdk'
-	import { cn } from '$lib/utils.js'
-	import { setCheckoutContext } from './ctx.svelte.js'
-	import { setAddressHost } from '../address/ctx.svelte.js'
-	import { runPlaceOrder, resolveRedirect } from './checkout-logic.js'
-	import type { UpdateAddress, AuthorizePayment, CartQuery } from './types.js'
+	} from 'sveltekit-medusa-sdk/cart';
+	import { addPromotion, removePromotion } from 'sveltekit-medusa-sdk/promotions';
+
+	import { cn } from '#lib/utils.js';
+	import { setCheckoutContext } from './ctx.svelte.js';
+	import { setAddressHost } from '../address/ctx.svelte.js';
+	import { runPlaceOrder, resolveRedirect } from './checkout-logic.js';
+	import type { UpdateAddress, AuthorizePayment, CartQuery } from './types.js';
 
 	interface Props {
 		form: RemoteForm<any, any>
@@ -36,13 +36,14 @@
 	const cartQuery = getCart() as unknown as CartQuery
 	// Payment providers for the cart's CURRENT region (rides the cart — reactive across region switches,
 	// unlike the cookie-scoped listPaymentProviders). Needs getCart to expand region.payment_providers.id.
-	const availableProviders = $derived(((cartQuery.current?.region?.payment_providers ?? []) as { id: string }[]).map(p => p.id))
-	let placing = $state(false)
-	let error = $state<unknown>(null)
-	let order = $state<StoreOrder | null>(null)
-	let addressStep: UpdateAddress | null = null
-	let paymentStep: AuthorizePayment | null = null
-	let shippingRefresh: (() => void | Promise<void>) | null = null
+	const availableProviders = $derived(((cartQuery.current?.region?.payment_providers ?? []) as { id: string }[]).map((p) => p.id));
+
+	let placing = $state(false);
+	let error = $state<unknown>(null);
+	let order = $state<StoreOrder | null>(null);
+	let addressStep: UpdateAddress | null = null;
+	let paymentStep: AuthorizePayment | null = null;
+	let shippingRefresh: (() => void | Promise<void>) | null = null;
 
 	function hasShipping() {
 		return (cartQuery.current?.shipping_methods?.length ?? 0) > 0
@@ -144,11 +145,11 @@
 		},
 		hasProvider: (id: string) => availableProviders.includes(id),
 		registerAddress,
-		registerPayment: fn => {
-			paymentStep = fn
+		registerPayment: (fn) => {
+			paymentStep = fn;
 		},
-		registerShippingRefresh: fn => {
-			shippingRefresh = fn
+		registerShippingRefresh: (fn) => {
+			shippingRefresh = fn;
 		},
 		placeOrder,
 		selectShipping,

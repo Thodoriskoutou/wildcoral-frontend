@@ -1,13 +1,13 @@
 <script lang="ts">
-	import Logo from '$lib/components/Logo.svelte';
-	import Button from '$lib/components/Button.svelte';
-	import QuickViewModal from '$lib/components/QuickViewModal.svelte';
-	import FilteredArchiveHeader from '$lib/components/FilteredArchiveHeader.svelte';
-	import EmptyFilterState from '$lib/components/EmptyFilterState.svelte';
-	import ScrollProgressBar from '$lib/components/ScrollProgressBar.svelte';
-	import ImageHoverZoom from '$lib/components/ImageHoverZoom.svelte';
-	import ProductCardSkeleton from '$lib/components/ProductCardSkeleton.svelte';
-	import TextLineSkeleton from '$lib/components/TextLineSkeleton.svelte';
+	import Logo from '#lib/components/Logo.svelte';
+	import Button from '#lib/components/Button.svelte';
+	import QuickViewModal from '#lib/components/QuickViewModal.svelte';
+	import FilteredArchiveHeader from '#lib/components/FilteredArchiveHeader.svelte';
+	import EmptyFilterState from '#lib/components/EmptyFilterState.svelte';
+	import ScrollProgressBar from '#lib/components/ScrollProgressBar.svelte';
+	import ImageHoverZoom from '#lib/components/ImageHoverZoom.svelte';
+	import ProductCardSkeleton from '#lib/components/ProductCardSkeleton.svelte';
+	import TextLineSkeleton from '#lib/components/TextLineSkeleton.svelte';
 
 	interface QuickViewProduct {
 		id?: string;

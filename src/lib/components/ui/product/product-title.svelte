@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	import { getProductContext } from './ctx.svelte.js'
 
 	// `as` exists so a card in a grid can render an h3 — a page must not contain 24 h1s.

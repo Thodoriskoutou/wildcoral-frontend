@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	import Card from './collections-card.svelte'
 	import { getCollectionsContext } from './collections-ctx.svelte.js'
 	import type { StoreCollection } from '@medusajs/types'

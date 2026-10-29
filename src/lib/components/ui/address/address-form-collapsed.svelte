@@ -1,20 +1,20 @@
 <script lang="ts">
-	import type { RemoteForm } from '@sveltejs/kit'
-	import type { StoreCart } from '@medusajs/types'
-	import Root from './address-root.svelte'
-	import { getAddressContext } from './ctx.svelte.js'
-	import Email from './address-email.svelte'
-	import FirstName from './address-first-name.svelte'
-	import LastName from './address-last-name.svelte'
-	import Autocomplete from './address-autocomplete.svelte'
-	import AddressLine1 from './address-line1.svelte'
-	import Line2 from './address-line2.svelte'
-	import Country from './address-country.svelte'
-	import Province from './address-province.svelte'
-	import PostalCode from './address-postal-code.svelte'
-	import City from './address-city.svelte'
-	import Phone from './address-phone.svelte'
-	import type { ProvinceConfig } from './types.js'
+	import type { RemoteForm } from '$app/server';
+	import type { StoreCart } from '@medusajs/types';
+	import Root from './address-root.svelte';
+	import { getAddressContext } from './ctx.svelte.js';
+	import Email from './address-email.svelte';
+	import FirstName from './address-first-name.svelte';
+	import LastName from './address-last-name.svelte';
+	import Autocomplete from './address-autocomplete.svelte';
+	import AddressLine1 from './address-line1.svelte';
+	import Line2 from './address-line2.svelte';
+	import Country from './address-country.svelte';
+	import Province from './address-province.svelte';
+	import PostalCode from './address-postal-code.svelte';
+	import City from './address-city.svelte';
+	import Phone from './address-phone.svelte';
+	import type { ProvinceConfig } from './types.js';
 
 	let props: {
 		form: RemoteForm<any, any>

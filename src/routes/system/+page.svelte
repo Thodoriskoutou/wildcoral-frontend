@@ -8,10 +8,10 @@
 	import Star from '@lucide/svelte/icons/star';
 	import Check from '@lucide/svelte/icons/check';
 	import CircleAlert from '@lucide/svelte/icons/circle-alert';
-	import Logo from '$lib/components/Logo.svelte';
-	import WishlistButton from '$lib/components/WishlistButton.svelte';
-	import StockBadge from '$lib/components/StockBadge.svelte';
-	import CouponInput from '$lib/components/CouponInput.svelte';
+	import Logo from '#lib/components/Logo.svelte';
+	import WishlistButton from '#lib/components/WishlistButton.svelte';
+	import StockBadge from '#lib/components/StockBadge.svelte';
+	import CouponInput from '#lib/components/CouponInput.svelte';
 
 	let selectedTab = $state('colors');
 

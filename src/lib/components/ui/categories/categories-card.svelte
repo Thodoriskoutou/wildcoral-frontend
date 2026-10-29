@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { l } from '$lib/i18n';
-	import { cn } from '$lib/utils.js'
-	import * as Card from '$lib/components/ui/card/index.js'
+	import { l } from '#lib/i18n/index.js';
+	import { cn } from '#lib/utils.js'
+	import * as Card from '#lib/components/ui/card/index.js'
 	import type { StoreProductCategory } from '@medusajs/types'
 	import type { Snippet } from 'svelte'
 

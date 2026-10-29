@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte'
 	import { requestResetPassword } from 'sveltekit-medusa-sdk/auth'
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	import { createAuthForm } from './create-auth-form.svelte.js'
 	import { resetMessages } from './auth-messages.js'
 	import type { AuthMessages, AuthResult } from './types.js'

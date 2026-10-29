@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	import { getReviewsContext } from './reviews-ctx.svelte.js'
 	import Item from '../review/review-item.svelte'
 	import type { StoreReview } from '../review/review-types.js'

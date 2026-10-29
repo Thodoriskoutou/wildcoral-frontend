@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { t } from '$lib/i18n'
+	import { t } from '#lib/i18n/index.js'
 	// elements:false iDEAL payment. Renders NO input: the account-holder name comes from the address form
 	// (first + last name, which the checkout form already requires), and the bank is chosen on Stripe's
 	// redirect page. On place-order it confirms → the browser redirects to the bank → /checkout/return.
 	import { onMount } from 'svelte'
 	import { getStripeContext, confirmIdealPayment } from 'sveltekit-stripe'
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	import { getCheckoutContextOptional } from './ctx.svelte.js'
 	import { getStripeSessionContext } from './stripe-cs-context.js'
 	import { cartBillingDetails } from './checkout-logic.js'

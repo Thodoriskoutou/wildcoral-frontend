@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { t, l } from '$lib/i18n';
+	import { t, l } from '#lib/i18n/index.js';
 	import Cookie from '@lucide/svelte/icons/cookie';
 	import X from '@lucide/svelte/icons/x';
-	import { site } from '$lib/site';
+	import { site } from '#lib/site.js';
 
 	// Only link the policy pages that exist (set their URLs in src/lib/site.ts).
 	const legalLinks = [

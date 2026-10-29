@@ -1,17 +1,20 @@
 <script lang="ts">
+	import type { RemoteForm } from '$app/server';
+
 	// Region-driven checkout: renders whichever payment provider the cart's current region is
 	// configured for (from region.payment_providers). Bundles all supported provider bodies, so it
 	// pulls both payment deps — expected for an autoswap preset. `config` passes per-provider options
 	// down, keyed by the full Medusa provider id.
-	import type { RemoteForm } from '@sveltejs/kit'
-	import type { StoreOrder } from '@medusajs/types'
+	import type { StoreOrder } from '@medusajs/types';
+
 	// sveltekit-medusa-sdk@2.18.0 ships this generic address form as `braintreeCheckoutForm` (it is not
 	// Braintree-specific); newer registry code refers to it as `checkoutForm`.
-	import { braintreeCheckoutForm as checkoutForm } from 'sveltekit-medusa-sdk'
-	import Root from './checkout.svelte'
-	import AutoSwitch from './checkout-auto-switch.svelte'
+	import { braintreeCheckoutForm as checkoutForm } from 'sveltekit-medusa-sdk/braintree';
 
-	type ProviderConfig = { elements?: boolean }
+	import Root from './checkout.svelte';
+	import AutoSwitch from './checkout-auto-switch.svelte';
+
+	type ProviderConfig = { elements?: boolean };
 
 	interface Props {
 		form?: RemoteForm<any, any>
@@ -45,7 +48,15 @@
 </script>
 
 <form {...form}>
-	<Root {form} {...rest}>
-		<AutoSwitch {form} {config} {googlePlacesApiKey} {publishableKey} {returnUrl} {restrictToCurrentRegion} {allowExpressCheckout} />
+	<Root form={form} {...rest}>
+		<AutoSwitch
+			form={form}
+			config={config}
+			googlePlacesApiKey={googlePlacesApiKey}
+			publishableKey={publishableKey}
+			returnUrl={returnUrl}
+			restrictToCurrentRegion={restrictToCurrentRegion}
+			allowExpressCheckout={allowExpressCheckout}
+		/>
 	</Root>
 </form>

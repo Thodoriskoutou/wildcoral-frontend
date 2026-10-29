@@ -9,6 +9,7 @@ export const el: Record<string, string> = {
 	"\"We believe swimwear should be an extension of your identity—not a costume. Each piece is designed to honor the natural form while celebrating individuality.\"":
 		"«Πιστεύουμε ότι το μαγιό πρέπει να είναι προέκταση της ταυτότητάς σας — όχι ένα κοστούμι. Κάθε κομμάτι σχεδιάζεται ώστε να τιμά τη φυσική μορφή του σώματος και να γιορτάζει την ατομικότητα.»",
 	"(optional)": "(προαιρετικό)",
+	"(publishable key) in": "(δημοσιεύσιμο κλειδί) στο",
 	"+{more} more": "+{more} ακόμη",
 	"100% plastic-free, fully recyclable materials with a reusable linen pouch":
 		"Υλικά 100% χωρίς πλαστικό, πλήρως ανακυκλώσιμα, με επαναχρησιμοποιήσιμο λινό πουγκί",
@@ -77,8 +78,6 @@ export const el: Record<string, string> = {
 	"Between sizes, or not sure? Write to us and we’ll help you choose.":
 		"Ανάμεσα σε δύο μεγέθη ή έχετε αμφιβολία; Γράψτε μας και θα σας βοηθήσουμε να επιλέξετε.",
 	"Billing address is the same as shipping": "Η διεύθυνση τιμολόγησης είναι η ίδια με τη διεύθυνση αποστολής",
-	"Body measurements in {sizeChartUnit}. Measurements are approximate.":
-		"Μετρήσεις σώματος σε {sizeChartUnit}. Οι μετρήσεις είναι ενδεικτικές.",
 	"Bought this piece?": "Αγοράσατε αυτό το προϊόν;",
 	"Breadcrumb": "Διαδρομή πλοήγησης",
 	"Bust": "Στήθος",
@@ -179,7 +178,6 @@ export const el: Record<string, string> = {
 	"Email": "Email",
 	"Email Address": "Διεύθυνση email",
 	"Email address": "Διεύθυνση email",
-	"Email us": "Στείλτε μας email",
 	"Enter address": "Εισαγάγετε διεύθυνση",
 	"Enter coupon code": "Εισαγάγετε κωδικό κουπονιού",
 	"Enter your email and password to sign in.": "Εισαγάγετε το email και τον κωδικό σας για να συνδεθείτε.",
@@ -217,8 +215,6 @@ export const el: Record<string, string> = {
 	"Follow {handle}": "Ακολουθήστε το {handle}",
 	"For the best fit, measure yourself and compare with the chart.":
 		"Για την καλύτερη εφαρμογή, μετρηθείτε και συγκρίνετε με τον πίνακα.",
-	"For the best fit, measure yourself. If you are unsure which size to choose, write to us and we will help.":
-		"Για την καλύτερη εφαρμογή, μετρηθείτε. Αν δεν είστε βέβαιοι ποιο μέγεθος να επιλέξετε, γράψτε μας και θα σας βοηθήσουμε.",
 	"Forgot password?": "Ξεχάσατε τον κωδικό;",
 	"Forgot your password?": "Ξεχάσατε τον κωδικό σας;",
 	"Free": "Δωρεάν",
@@ -239,7 +235,6 @@ export const el: Record<string, string> = {
 	"Highest rated": "Υψηλότερη βαθμολογία",
 	"Hip": "Γοφοί",
 	"Hip (in)": "Γοφοί (in)",
-	"Hips": "Γοφοί",
 	"Hips ({sizeChartUnit})": "Γοφοί ({sizeChartUnit})",
 	"Home": "Αρχική",
 	"How do I track my order?": "Πώς μπορώ να παρακολουθήσω την παραγγελία μου;",
@@ -293,17 +288,12 @@ export const el: Record<string, string> = {
 	"Materials & Care": "Υλικά & φροντίδα",
 	"Measure around the fullest part of your bust, keeping the tape parallel to the floor":
 		"Μετρήστε γύρω από το πιο πλατύ σημείο του στήθους, κρατώντας το μέτρο παράλληλα με το δάπεδο",
-	"Measure around the fullest part of your hips": "Μετρήστε γύρω από το πιο πλατύ σημείο των γοφών",
 	"Measure around the fullest part of your hips, approximately 8\" below your waist":
 		"Μετρήστε γύρω από το πιο πλατύ σημείο των γοφών, περίπου 20 εκ. κάτω από τη μέση",
-	"Measure around your natural waistline, keeping the tape comfortably loose":
-		"Μετρήστε γύρω από τη φυσική γραμμή της μέσης, κρατώντας το μέτρο άνετα χαλαρό",
 	"Measure around your natural waistline, the narrowest part of your torso":
 		"Μετρήστε γύρω από τη φυσική γραμμή της μέσης, το στενότερο σημείο του κορμού σας",
 	"Menu": "Μενού",
 	"Message": "Μήνυμα",
-	"Messages can’t be sent right now. Please email us directly instead.":
-		"Δεν είναι δυνατή η αποστολή μηνυμάτων αυτή τη στιγμή. Στείλτε μας email απευθείας.",
 	"My Account": "Ο λογαριασμός μου",
 	"My order": "Η παραγγελία μου",
 	"NEW": "ΝΕΟ",
@@ -326,7 +316,6 @@ export const el: Record<string, string> = {
 	"No delivery method selected": "Δεν έχει επιλεγεί τρόπος παράδοσης",
 	"No delivery options available": "Δεν υπάρχουν διαθέσιμες επιλογές παράδοσης",
 	"No pieces match your selection": "Κανένα προϊόν δεν ταιριάζει με την επιλογή σας",
-	"No products in this category yet.": "Δεν υπάρχουν ακόμη προϊόντα σε αυτή την κατηγορία.",
 	"No products in this collection yet.": "Δεν υπάρχουν ακόμη προϊόντα σε αυτή τη συλλογή.",
 	"No results for '{searchTerm}'": "Δεν βρέθηκαν αποτελέσματα για '{searchTerm}'",
 	"No results found.": "Δεν βρέθηκαν αποτελέσματα.",
@@ -359,8 +348,6 @@ export const el: Record<string, string> = {
 	"Orders are only shown to the account they were placed with.":
 		"Οι παραγγελίες εμφανίζονται μόνο στον λογαριασμό με τον οποίο έγιναν.",
 	"Our collection is being prepared — please check back soon.": "Η συλλογή μας ετοιμάζεται — ελάτε ξανά σύντομα.",
-	"Our contact details are coming soon. In the meantime, the Customer Care pages answer most questions about sizing, shipping and returns.":
-		"Τα στοιχεία επικοινωνίας μας θα προστεθούν σύντομα. Στο μεταξύ, οι σελίδες Εξυπηρέτησης πελατών απαντούν στις περισσότερες ερωτήσεις για μεγέθη, αποστολές και επιστροφές.",
 	"Our pieces are designed to fit true to size. If you're between sizes or prefer a more relaxed fit, we recommend sizing up. For personalized sizing advice, contact our styling concierge.":
 		"Τα κομμάτια μας σχεδιάζονται ώστε να ταιριάζουν ακριβώς στο μέγεθός τους. Αν βρίσκεστε ανάμεσα σε δύο μεγέθη ή προτιμάτε πιο άνετη εφαρμογή, προτείνουμε να επιλέξετε μεγαλύτερο μέγεθος. Για εξατομικευμένες συμβουλές μεγέθους, επικοινωνήστε με τον σύμβουλο στιλ μας.",
 	"Our team is happy to help with sizing, orders and returns.":
@@ -533,7 +520,6 @@ export const el: Record<string, string> = {
 	"Size": "Μέγεθος",
 	"Size Guide": "Οδηγός μεγεθών",
 	"Size guide, shipping and returns": "Οδηγός μεγεθών, αποστολή και επιστροφές",
-	"Sizes": "Μεγέθη",
 	"Sizing & fit": "Μεγέθη & εφαρμογή",
 	"Sizing, shipping and returns": "Μεγέθη, αποστολή και επιστροφές",
 	"Sold Out": "Εξαντλήθηκε",
@@ -600,7 +586,6 @@ export const el: Record<string, string> = {
 	"The collection is unavailable": "Η συλλογή δεν είναι διαθέσιμη",
 	"The horizon you are looking for is currently out of reach.": "Ο ορίζοντας που αναζητάτε είναι προς το παρόν απρόσιτος.",
 	"The items on this order couldn't be loaded.": "Δεν ήταν δυνατή η φόρτωση των προϊόντων αυτής της παραγγελίας.",
-	"The quickest way to reach us is by email.": "Ο ταχύτερος τρόπος να επικοινωνήσετε μαζί μας είναι το email.",
 	"This account needs an extra sign-in step that is not supported yet.":
 		"Αυτός ο λογαριασμός απαιτεί επιπλέον βήμα σύνδεσης που δεν υποστηρίζεται ακόμη.",
 	"This combination is not available.": "Αυτός ο συνδυασμός δεν είναι διαθέσιμος.",
@@ -720,6 +705,18 @@ export const el: Record<string, string> = {
 		"Η κριτική σας αναμένει έγκριση. Μπορείτε να την επεξεργαστείτε παρακάτω.",
 	"Your shopping cart": "Το καλάθι αγορών σας",
 	"Your wishlist could not be loaded right now.": "Δεν ήταν δυνατή η φόρτωση των αγαπημένων σας αυτή τη στιγμή.",
+	"We can’t find any orders for that email address.": "Δεν μπορούμε να βρούμε παραγγελίες για αυτή τη διεύθυνση email.",
+	"That order number is not associated with this email address.": "Αυτός ο αριθμός παραγγελίας δεν αντιστοιχεί σε αυτή τη διεύθυνση email.",
+	"Too many codes were requested. Please wait a few minutes and try again.": "Ζητήθηκαν πάρα πολλοί κωδικοί. Περιμένετε λίγα λεπτά και δοκιμάστε ξανά.",
+	"We couldn’t send a code right now. Please try again in a moment.": "Δεν μπορέσαμε να στείλουμε κωδικό αυτή τη στιγμή. Δοκιμάστε ξανά σε λίγο.",
+	"That code is incorrect or has expired. Request a new one and try again.": "Αυτός ο κωδικός είναι λανθασμένος ή έχει λήξει. Ζητήστε νέο κωδικό και δοκιμάστε ξανά.",
+	"Enter your order number and the email used at checkout. We’ll send a code to verify it’s yours.": "Εισαγάγετε τον αριθμό παραγγελίας και το email που χρησιμοποιήσατε στο ταμείο. Θα στείλουμε έναν κωδικό για να επιβεβαιώσουμε ότι είναι δική σας.",
+	"Verification code": "Κωδικός επαλήθευσης",
+	"We sent a six-digit code to {email}.": "Στείλαμε έναν εξαψήφιο κωδικό στο {email}.",
+	"Verifying…": "Επαλήθευση…",
+	"View order": "Προβολή παραγγελίας",
+	"Use a different order": "Χρησιμοποιήστε διαφορετική παραγγελία",
+	"Send verification code": "Αποστολή κωδικού επαλήθευσης",
 	"You’ll be redirected to your bank to authorize the payment.":
 		"Θα μεταφερθείτε στην τράπεζά σας για να εγκρίνετε την πληρωμή.",
 	"You’ve sent a few messages already. Please wait a few minutes and try again.":

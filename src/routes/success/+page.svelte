@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { t, l } from '$lib/i18n';
+	import { t, l } from '#lib/i18n/index.js';
 	import { onMount } from 'svelte';
-	import { Metadata } from '$lib/components/ui/seo';
+	import { Metadata } from '#lib/components/ui/seo/index.js';
 	import Check from '@lucide/svelte/icons/check';
 	import Package from '@lucide/svelte/icons/package';
 	import Lock from '@lucide/svelte/icons/lock';
 	import MessageCircle from '@lucide/svelte/icons/message-circle';
-	import InstagramIcon from '$lib/components/icons/InstagramIcon.svelte';
-	import { formatPrice } from '$lib/medusa/catalog';
-	import { site, photos } from '$lib/site';
-	import { recallOrder, type OrderSummary } from '$lib/medusa/order-summary';
+	import InstagramIcon from '#lib/components/icons/InstagramIcon.svelte';
+	import { formatPrice } from '#lib/medusa/catalog.js';
+	import { site, photos } from '#lib/site.js';
+	import { recallOrder, type OrderSummary } from '#lib/medusa/order-summary.js';
 
 	// The order that was just placed, handed over by checkout (see order-summary.ts). It is read
 	// after mount because sessionStorage doesn't exist on the server; a direct visit to /success

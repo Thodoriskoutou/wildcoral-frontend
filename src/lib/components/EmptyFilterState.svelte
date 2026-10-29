@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t, l } from '$lib/i18n';
+	import { t, l } from '#lib/i18n/index.js';
 	interface Props {
 		message?: string;
 		exploreAllLink?: string;

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { t } from '$lib/i18n'
-	import { cn } from '$lib/utils.js'
+	import { t } from '#lib/i18n/index.js'
+	import { cn } from '#lib/utils.js'
 	import { getAddressContext } from './ctx.svelte.js'
 	let { label = t('Billing address is the same as shipping'), class: className = '' }: { label?: string; class?: string } = $props()
 	const ctx = getAddressContext()

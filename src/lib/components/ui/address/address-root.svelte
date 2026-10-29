@@ -1,14 +1,27 @@
 <script lang="ts">
-	import { onMount, type Snippet } from 'svelte'
-	import type { RemoteForm } from '@sveltejs/kit'
-	import type { StoreCart } from '@medusajs/types'
-	import { getCart, getRegions, updateCart, regionForCountry, countriesFromRegions } from 'sveltekit-medusa-sdk'
-	import { cn } from '$lib/utils.js'
-	import { setAddressContext, getAddressHostOptional } from './ctx.svelte.js'
-	import { buildUpdatePayload, resolveCountryValue, ADDRESS_KEYS } from './address-logic.js'
-	import { defaultProvinceConfig, resolveProvinceValue, type ProvinceConfig } from '../input-province/provinces'
-	import type { CartQuery, RegionsResource, UpdateCartArgs } from './types.js'
-	import type { NormalizedAddress } from '../google-places-autocomplete/types'
+	import type { RemoteForm } from '$app/server';
+	import { onMount, type Snippet } from 'svelte';
+	import type { StoreCart } from '@medusajs/types';
+
+	import {
+		getCart,
+		updateCart
+	} from 'sveltekit-medusa-sdk/cart';
+	import { regionForCountry, countriesFromRegions } from '#lib/medusa/regions.js';
+	import { getRegionsQuery } from '#lib/medusa/catalog.remote.js';
+
+	import { cn } from '#lib/utils.js';
+	import { setAddressContext, getAddressHostOptional } from './ctx.svelte.js';
+	import { buildUpdatePayload, resolveCountryValue, ADDRESS_KEYS } from './address-logic.js';
+
+	import {
+		defaultProvinceConfig,
+		resolveProvinceValue,
+		type ProvinceConfig
+	} from '../input-province/provinces';
+
+	import type { CartQuery, RegionsResource, UpdateCartArgs } from './types.js';
+	import type { NormalizedAddress } from '../google-places-autocomplete/types';
 
 	interface Props {
 		form: RemoteForm<any, any>
@@ -40,8 +53,9 @@
 	// Call the remotes once; read `.current` reactively (no $effect).
 	// The SDK's getCart/getRegions are SvelteKit remote queries exposing those at runtime, but their
 	// built types under-resolve to a bare Promise here, so bridge them to the query shapes.
-	const cartQuery = getCart() as unknown as CartQuery
-	const regionsRes = getRegions() as unknown as RegionsResource
+	const cartQuery = getCart() as unknown as CartQuery;
+
+	const regionsRes = getRegionsQuery() as unknown as RegionsResource;
 
 	// Read the optional host context ONCE during init (not in onMount — getContext must run while the
 	// component is initialising). A wrapping Checkout.Root fills this; standalone Address leaves it null.
@@ -63,32 +77,44 @@
 	// Guards against a debounced `rawSave` firing mid-`updateAddress()` and racing its own updateCart.
 	let committing = false
 
-	let billingSameAsShipping = $state(true)
-	const showBilling = $derived(!billingSameAsShipping)
-	let expanded = $state(false)
-	let rootEl: HTMLElement
+	let billingSameAsShipping = $state(true);
+	const showBilling = $derived(!billingSameAsShipping);
+	let expanded = $state(false);
+	let rootEl: HTMLElement;
+	const get = (name: string) => form.fields[name]?.value() ?? '';
 
-	const get = (name: string) => form.fields[name]?.value() ?? ''
 	// The selectable delivery countries. `restrictToCurrentRegion` narrows to the cart's current region
 	// (pinned-region checkout); otherwise the full shippable set across all regions (self-correcting).
 	const countries = () => {
-		const regions = regionsRes.current ?? []
-		if (!restrictToCurrentRegion) return countriesFromRegions(regions)
-		const current = regions.find(r => r.id === cartQuery.current?.region_id)
-		return countriesFromRegions(current ? [current] : regions)
-	}
+		const regions = regionsRes.current ?? [];
+
+		if (!restrictToCurrentRegion) return countriesFromRegions(regions);
+
+		const current = regions.find((r) => r.id === cartQuery.current?.region_id);
+
+		return countriesFromRegions(current ? [current] : regions);
+	};
 
 	// Fields whose fill (autofill/manual) reveals the collapsed structured block.
-	const STRUCTURED = ['address_1', 'address_2', 'city', 'province', 'postal_code', 'country_code', 'phone']
-	const isStructured = (name: string) => STRUCTURED.includes(name.replace(/^billing_/, ''))
+	const STRUCTURED = [
+		'address_1',
+		'address_2',
+		'city',
+		'province',
+		'postal_code',
+		'country_code',
+		'phone'
+	];
+
+	const isStructured = (name: string) => STRUCTURED.includes(name.replace(/^billing_/, ''));
 
 	// ---- hand-rolled cancelable/awaitable debounce (replaces p-debounce so updateAddress() can flush) ----
 	let timer: ReturnType<typeof setTimeout> | undefined
 	let pending: Promise<void> | null = null
 	let resolvePending: (() => void) | null = null
 	function save(): Promise<void> {
-		if (!pending) pending = new Promise(r => (resolvePending = r))
-		if (timer) clearTimeout(timer)
+		if (!pending) pending = new Promise((r) => resolvePending = r);
+		if (timer) clearTimeout(timer);
 		// Read debounceMs here (inside the deferred closure), not at the top level — a prop read inside
 		// a callback is reactive-safe; capturing it into a top-level const would warn (state_referenced_locally).
 		timer = setTimeout(runSave, debounceMs)
@@ -190,10 +216,10 @@
 	async function setRegionForCountry(code: string) {
 		// Pinned-region checkout: never switch region from the address — this also clamps a browser
 		// autofill that injects an out-of-region country (which the country list wouldn't even offer).
-		if (restrictToCurrentRegion) return
-		const regions = regionsRes.current ?? (await regionsRes)
-		const region = regionForCountry(regions, code)
-		if (!region || cartQuery.current?.region_id === region.id) return
+		if (restrictToCurrentRegion) return;
+		const regions = regionsRes.current ?? await regionsRes;
+		const region = regionForCountry(regions, code);
+		if (!region || cartQuery.current?.region_id === region.id) return;
 		try {
 			// Switch the region AND commit the new country in ONE atomic updateCart — Medusa validates the
 			// country against the NEW region because region_id rides in the same payload. Medusa blanks the
@@ -237,10 +263,9 @@
 		billingSameAsShipping = same
 		form.fields.hideBilling?.set(same)
 		if (same) {
-			for (const k of ADDRESS_KEYS) form.fields[`billing_${k}`]?.set('')
-			updateCart({ billing_address: {} })
-				.then(u => u && notifyChange(u))
-				.catch(e => notifyError(e))
+			for (const k of ADDRESS_KEYS) form.fields[`billing_${k}`]?.set('');
+
+			updateCart({ billing_address: {} }).then((u) => u && notifyChange(u)).catch((e) => notifyError(e));
 		}
 	}
 

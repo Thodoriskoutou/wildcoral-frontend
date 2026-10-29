@@ -1,4 +1,4 @@
-import { msg, t } from '$lib/i18n'
+import { msg, t } from '#lib/i18n/index.js'
 import type { AuthMessages } from './types.js'
 
 // Default, overridable error copy. Codes come from the SDK auth remotes' AuthResult.

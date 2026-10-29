@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { t, l } from '$lib/i18n';
-	import { cn } from '$lib/utils.js'
-	import { buttonVariants, type ButtonSize, type ButtonVariant } from '$lib/components/ui/button/index.js'
+	import { t, l } from '#lib/i18n/index.js';
+	import { cn } from '#lib/utils.js'
+	import { buttonVariants, type ButtonSize, type ButtonVariant } from '#lib/components/ui/button/index.js'
 	import { getCartContext, getCartSheetContextOptional } from './ctx.svelte.js'
 	import type { Snippet } from 'svelte'
 	let {

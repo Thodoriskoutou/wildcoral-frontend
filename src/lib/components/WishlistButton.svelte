@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t } from '$lib/i18n'
+	import { t } from '#lib/i18n/index.js'
 	// Heart / "Save for Later" button, backed by the customer's wishlist in Medusa (the
 	// @rsc-labs/medusa-wishlist plugin). Saving needs an account: a signed-out visitor who taps it is
 	// taken to the sign-in dialog. All hearts on a page share one state (see wishlist-state.svelte.ts).
@@ -7,7 +7,7 @@
 	import { untrack } from 'svelte';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
-	import { wishlist } from '$lib/medusa/wishlist-state.svelte';
+	import { wishlist } from '#lib/medusa/wishlist-state.svelte.js';
 
 	interface Props {
 		productId: string;

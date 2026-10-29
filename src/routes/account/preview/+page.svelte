@@ -2,9 +2,9 @@
 	// DEV ONLY (the route 404s in production): the order list and tracking page drawn from sample
 	// orders, so the design can be checked without a Medusa customer, order or shipment.
 	import { page } from '$app/state';
-	import { sampleViews } from '$lib/medusa/order-fixtures';
-	import OrderCard from '$lib/components/account/OrderCard.svelte';
-	import OrderDetail from '$lib/components/account/OrderDetail.svelte';
+	import { sampleViews } from '#lib/medusa/order-fixtures.js';
+	import OrderCard from '#lib/components/account/OrderCard.svelte';
+	import OrderDetail from '#lib/components/account/OrderDetail.svelte';
 
 	const selected = $derived(sampleViews.find((o) => o.id === page.url.searchParams.get('order')) ?? null);
 </script>

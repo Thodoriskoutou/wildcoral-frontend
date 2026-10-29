@@ -1,5 +1,5 @@
 <script lang="ts">
-	import * as PageNav from '$lib/components/ui/page-nav/index.js'
+	import * as PageNav from '#lib/components/ui/page-nav/index.js'
 	import { getProductsContext } from './products-ctx.svelte.js'
 	import type { Snippet } from 'svelte'
 

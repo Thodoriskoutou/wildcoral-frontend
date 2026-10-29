@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { t } from '$lib/i18n'
+	import { t } from '#lib/i18n/index.js'
 	import Eye from '@lucide/svelte/icons/eye'
 	import EyeOff from '@lucide/svelte/icons/eye-off'
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	import { getAuthFieldContext } from './ctx.svelte.js'
 	import { AUTH_INPUT_CLASS } from './auth-input-class.js'
 

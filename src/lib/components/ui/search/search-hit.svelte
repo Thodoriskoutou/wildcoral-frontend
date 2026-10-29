@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { l } from '$lib/i18n';
-	import { cn } from '$lib/utils.js'
+	import { l } from '#lib/i18n/index.js';
+	import { cn } from '#lib/utils.js'
 	import { getSearchContext, type SearchHit } from './ctx.svelte.js'
 
 	interface Props {

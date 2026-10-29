@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
+	import { t } from '#lib/i18n/index.js';
 	import { onMount } from 'svelte'
-	import { getShippingOptions } from 'sveltekit-medusa-sdk'
-	import { cn } from '$lib/utils.js'
+import { getShippingOptions } from 'sveltekit-medusa-sdk/cart'
+	import { cn } from '#lib/utils.js'
 	import { getCheckoutContext } from './ctx.svelte.js'
 	import { formatPrice } from './format-price.js'
 

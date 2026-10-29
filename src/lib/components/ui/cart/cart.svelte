@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { cn } from '$lib/utils.js'
-	import { getCart, updateCartItem, removeFromCart } from 'sveltekit-medusa-sdk'
+	import { cn } from '#lib/utils.js'
+import { getCart, updateCartItem, removeFromCart } from 'sveltekit-medusa-sdk/cart'
 	import { setCartContext } from './ctx.svelte.js'
 	import * as logic from './cart-logic.js'
 	import { defaultLineHref } from './cart-logic.js'

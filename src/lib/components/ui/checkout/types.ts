@@ -1,10 +1,9 @@
-import type { RemoteForm } from '@sveltejs/kit'
-import type { StoreCart, StoreOrder } from '@medusajs/types'
+import type { RemoteForm } from '$app/server';
+import type { StoreCart, StoreOrder } from '@medusajs/types';
 
-export type CheckoutLine = NonNullable<StoreCart['items']>[number]
-
-export type UpdateAddress = () => Promise<StoreCart | null>
-export type AuthorizePayment = () => Promise<{ ok: boolean; error?: unknown }>
+export type CheckoutLine = NonNullable<StoreCart['items']>[number];
+export type UpdateAddress = () => Promise<StoreCart | null>;
+export type AuthorizePayment = () => Promise<{ ok: boolean; error?: unknown }>;
 
 // Shape the Root bridges the SDK's getCart query to, so it can read `.current` (like Cart.Root).
 export type CartQuery = { current: StoreCart | null | undefined }

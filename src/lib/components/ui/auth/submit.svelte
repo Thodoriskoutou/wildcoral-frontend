@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte'
-	import { Button, type ButtonSize, type ButtonVariant } from '$lib/components/ui/button/index.js'
-	import { cn } from '$lib/utils.js'
+	import { Button, type ButtonSize, type ButtonVariant } from '#lib/components/ui/button/index.js'
+	import { cn } from '#lib/utils.js'
 	import { getAuthFormContext } from './ctx.svelte.js'
 	let {
 		class: className = '',

@@ -1,6 +1,6 @@
-import { t, formatDate, getLocale, defaultLocale, msg } from '$lib/i18n'
-import { getContentItems, getContentItem } from 'sveltekit-medusa-sdk'
-import { site } from '$lib/site'
+import { t, formatDate, getLocale, defaultLocale, msg } from '#lib/i18n/index.js'
+import { getContentItemsQuery, getContentItemQuery } from './journal.remote.js'
+import { site } from '#lib/site.js'
 import type { ContentItem } from 'medusa-js-sdk';
 
 /**
@@ -120,11 +120,11 @@ function withOriginalSlug(item: ContentItem, suffix: string): ContentItem {
  * translated collection that does not exist (yet) or can't be read simply adds nothing.
  */
 export async function listJournalItems(limit: number): Promise<ContentItem[]> {
-	const original = await getContentItems({ slug: site.journalCollection, limit });
+	const original = await getContentItemsQuery({ slug: site.journalCollection, limit });
 	const translated = translatedCollection();
 	if (!translated) return original.content_items;
 
-	const own = await getContentItems({ slug: translated.collection, limit }).then(
+	const own = await getContentItemsQuery({ slug: translated.collection, limit }).then(
 		(res) => res.content_items.map((item) => withOriginalSlug(item, translated.slugSuffix)),
 		() => [] as ContentItem[]
 	);
@@ -137,8 +137,8 @@ export async function readJournalItem(itemSlug: string, render?: 'html') {
 	const extra = render ? { render } : {};
 	const translated = translatedCollection();
 	if (translated) {
-		const found = await getContentItem({ slug: translated.collection, itemSlug: itemSlug + translated.slugSuffix, ...extra }).catch(() => null);
+		const found = await getContentItemQuery({ slug: translated.collection, itemSlug: itemSlug + translated.slugSuffix, ...extra }).catch(() => null);
 		if (found) return { ...found, content_item: withOriginalSlug(found.content_item, translated.slugSuffix) };
 	}
-	return getContentItem({ slug: site.journalCollection, itemSlug, ...extra });
+	return getContentItemQuery({ slug: site.journalCollection, itemSlug, ...extra });
 }

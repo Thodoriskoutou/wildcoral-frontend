@@ -1,7 +1,7 @@
 <script lang="ts">
-	import * as Carousel from '$lib/components/ui/carousel/index.js'
-	import * as ImageZoom from '$lib/components/ui/image-zoom'
-	import { cn } from '$lib/utils.js'
+	import * as Carousel from '#lib/components/ui/carousel/index.js'
+	import * as ImageZoom from '#lib/components/ui/image-zoom/index.js'
+	import { cn } from '#lib/utils.js'
 	import { getGalleryContext } from './ctx.svelte.js'
 	import type { Snippet } from 'svelte'
 

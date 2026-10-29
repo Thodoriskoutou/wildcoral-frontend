@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
+	import { t } from '#lib/i18n/index.js';
 	// Write (or edit) a review of something the signed-in customer bought and received.
 	import { untrack } from 'svelte';
-	import { submitReview } from '$lib/medusa/reviews.remote';
-	import type { ReviewableItem } from '$lib/medusa/reviews';
+	import { submitReview } from '#lib/medusa/reviews.remote.js';
+	import type { ReviewableItem } from '#lib/medusa/reviews.js';
 	import RatingInput from './RatingInput.svelte';
 
 	let { productId, items, onsaved }: { productId: string; items: ReviewableItem[]; onsaved?: () => void | Promise<void> } = $props();

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	import { getCheckoutContext } from './ctx.svelte.js'
 	import Item from './checkout-item.svelte'
 	import type { Snippet } from 'svelte'

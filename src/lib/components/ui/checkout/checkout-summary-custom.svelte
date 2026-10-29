@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { formatLocale } from '$lib/i18n'
-	import { cn } from '$lib/utils.js'
+	import { formatLocale } from '#lib/i18n/index.js'
+	import { cn } from '#lib/utils.js'
 	import { getCheckoutContext } from './ctx.svelte.js'
 	import { formatPrice } from './format-price.js'
 

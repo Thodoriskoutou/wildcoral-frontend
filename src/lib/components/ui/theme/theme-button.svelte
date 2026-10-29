@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
+	import { t } from '#lib/i18n/index.js';
 	import { mode, toggleMode } from 'mode-watcher'
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	import SunIcon from '@lucide/svelte/icons/sun'
 	import MoonIcon from '@lucide/svelte/icons/moon'
 	import type { Snippet } from 'svelte'

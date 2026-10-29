@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { t, l } from '$lib/i18n';
-		import { Metadata } from '$lib/components/ui/seo';
-	import { safe } from '$lib/medusa/safe';
-	import { toPost, pickFeatured, listJournalItems } from '$lib/medusa/journal';
-	import { site } from '$lib/site';
+	import { t, l } from '#lib/i18n/index.js';
+		import { Metadata } from '#lib/components/ui/seo/index.js';
+	import { safe } from '#lib/medusa/safe.js';
+	import { toPost, pickFeatured, listJournalItems } from '#lib/medusa/journal.js';
+	import { site } from '#lib/site.js';
 	import { dev } from '$app/env';
 
 	// Posts come from the Medusa content plugin (collection: site.journalCollection). Only

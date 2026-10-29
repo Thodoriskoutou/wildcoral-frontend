@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
+	import { t } from '#lib/i18n/index.js';
 	// Pick 1–5 stars. Arrow keys move the choice, like any radio group.
 	import Star from '@lucide/svelte/icons/star';
 

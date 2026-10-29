@@ -1,4 +1,4 @@
-import { formatLocale } from '$lib/i18n'
+import { formatLocale } from '#lib/i18n/index.js'
 export function formatPrice(amount: number | null | undefined, currencyCode: string | null | undefined, locale = formatLocale()): string {
 	if (amount == null || !currencyCode) return ''
 	return new Intl.NumberFormat(locale, {

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
-	import { cn } from '$lib/utils.js'
+	import { t } from '#lib/i18n/index.js';
+	import { cn } from '#lib/utils.js'
 	import { goto } from '$app/navigation'
 	import { getProductContextOptional } from './ctx.svelte.js'
 	import * as logic from './product-logic.js'

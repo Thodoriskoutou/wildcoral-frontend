@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
-	import { cn } from '$lib/utils.js'
-	import { Button, type ButtonSize, type ButtonVariant } from '$lib/components/ui/button/index.js'
+	import { t } from '#lib/i18n/index.js';
+	import { cn } from '#lib/utils.js'
+	import { Button, type ButtonSize, type ButtonVariant } from '#lib/components/ui/button/index.js'
 	import { logout } from 'sveltekit-medusa-sdk/auth'
 	import { getCustomer } from 'sveltekit-medusa-sdk/customer'
 	import type { Snippet } from 'svelte'

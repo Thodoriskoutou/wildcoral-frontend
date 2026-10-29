@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { t, l } from '$lib/i18n';
-	import { Metadata } from '$lib/components/ui/seo';
+	import { t, l } from '#lib/i18n/index.js';
+	import { Metadata } from '#lib/components/ui/seo/index.js';
 	import Minus from '@lucide/svelte/icons/minus';
 	import Plus from '@lucide/svelte/icons/plus';
 	import Lock from '@lucide/svelte/icons/lock';
@@ -10,15 +10,14 @@
 		getCart,
 		updateCartItem,
 		removeFromCart,
-		addPromotion,
-		removePromotion,
 		updateCart
-	} from 'sveltekit-medusa-sdk';
+	} from 'sveltekit-medusa-sdk/cart';
+	import { addPromotion, removePromotion } from 'sveltekit-medusa-sdk/promotions';
 	import { beforeNavigate } from '$app/navigation';
-	import { site } from '$lib/site';
-	import { formatPrice } from '$lib/medusa/catalog';
-	import CouponInput from '$lib/components/CouponInput.svelte';
-	import ProductMedia from '$lib/components/ProductMedia.svelte';
+	import { site } from '#lib/site.js';
+	import { formatPrice } from '#lib/medusa/catalog.js';
+	import CouponInput from '#lib/components/CouponInput.svelte';
+	import ProductMedia from '#lib/components/ProductMedia.svelte';
 
 	// The live Medusa cart (tied to the visitor's cart cookie). Commands below update this same
 	// query in place, so the page re-renders without any manual state.
@@ -56,7 +55,8 @@
 		saveTimer = setTimeout(persistOptions, 600);
 	}
 	// If they head to checkout before the debounce fires, save right away.
-	beforeNavigate(() => {
+	beforeNavigate(({ shallow, type }) => {
+		if (shallow && type === 'goto') return;
 		if (saveTimer) persistOptions();
 	});
 
@@ -219,7 +219,7 @@
 
 						<div>
 							<button
-								onclick={() => (showGiftMessage = !showGiftMessage)}
+								onclick={() => showGiftMessage = !showGiftMessage}
 								class="flex items-center justify-between w-full text-left pb-4 border-b border-gray-200 hover:opacity-70 transition-opacity"
 							>
 								<span class="text-sm tracking-wide">{t('Add a Gift Message')}</span>

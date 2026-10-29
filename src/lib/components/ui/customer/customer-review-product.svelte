@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { l, t } from '$lib/i18n';
+	import { l, t } from '#lib/i18n/index.js';
 	// Links a "my reviews" row back to its product. `GET /store/customers/me/reviews` enriches
 	// each review with `product.title/handle/thumbnail` (see the ratings plugin route) for exactly
 	// this purpose — `StoreReview` itself (the surface-neutral core type) doesn't declare `product`,
 	// so it's typed locally here and read defensively (the product may be missing, e.g. deleted).
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	import { getReviewItemContextOptional } from '../review/reviews-item-ctx.svelte.js'
 	import type { StoreReview } from '../review/review-types.js'
 

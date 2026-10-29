@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
-	import { cn } from '$lib/utils.js'
-	import * as Sheet from '$lib/components/ui/sheet/index.js'
+	import { t } from '#lib/i18n/index.js';
+	import { cn } from '#lib/utils.js'
+	import * as Sheet from '#lib/components/ui/sheet/index.js'
 	import ShoppingBag from '@lucide/svelte/icons/shopping-bag'
 	import Badge from './cart-badge.svelte'
 	import type { Snippet } from 'svelte'

@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { t, l } from '$lib/i18n';
+	import { t, l } from '#lib/i18n/index.js';
 	import { page } from '$app/state';
-	import { getProductQuery, getProductsQuery } from 'sveltekit-medusa-sdk';
-	import { Metadata } from '$lib/components/ui/seo';
-	import { toPost, listJournalItems, readJournalItem } from '$lib/medusa/journal';
-	import { toCatalogProduct, formatPrice, PRODUCT_FIELDS } from '$lib/medusa/catalog';
-	import { safe } from '$lib/medusa/safe';
-	import { site } from '$lib/site';
+	import { getProductQuery, getProductsQuery } from '#lib/medusa/catalog.remote.js';
+	import { Metadata } from '#lib/components/ui/seo/index.js';
+	import { toPost, listJournalItems, readJournalItem } from '#lib/medusa/journal.js';
+	import { toCatalogProduct, formatPrice, PRODUCT_FIELDS } from '#lib/medusa/catalog.js';
+	import { safe } from '#lib/medusa/safe.js';
+	import { site } from '#lib/site.js';
 	import { dev } from '$app/env';
-	import ProductMedia from '$lib/components/ProductMedia.svelte';
+	import ProductMedia from '#lib/components/ProductMedia.svelte';
 
 	// The post (as sanitized HTML, rendered by the content plugin), the other posts for "Continue
 	// Reading", and the products for "Shop the Story": the ones the post lists in its `products`

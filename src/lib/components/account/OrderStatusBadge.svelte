@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { OrderView } from '$lib/medusa/order-tracking';
+	import type { OrderView } from '#lib/medusa/order-tracking.js';
 
 	let { order }: { order: Pick<OrderView, 'phase' | 'statusLabel'> } = $props();
 

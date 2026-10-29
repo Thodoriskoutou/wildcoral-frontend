@@ -1,20 +1,22 @@
 <script lang="ts">
-	import { t, l, getLocale, localizePath, pathOf, locales, localeNames, localeShort, type Locale } from '$lib/i18n';
+	import { t, l, getLocale, localizePath, pathOf, locales, localeNames, localeShort, type Locale } from '#lib/i18n/index.js';
 	import './layout.css';
-	import favicon from '$lib/assets/favicon.svg';
+	import favicon from '#lib/assets/favicon.svg';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
-	import { getCart, getProductCategoriesQuery } from 'sveltekit-medusa-sdk';
+	import { building } from '$app/environment';
+	import { getCart } from 'sveltekit-medusa-sdk/cart';
+	import { getProductCategoriesQuery } from '#lib/medusa/catalog.remote.js';
 	import type { ContentItem } from 'medusa-js-sdk';
-	import { listJournalItems } from '$lib/medusa/journal';
+	import { listJournalItems } from '#lib/medusa/journal.js';
 	import { SITE_NAME, SITE_URL } from '$app/env/public';
-	import { MetaProvider } from '$lib/components/ui/seo';
-	import * as Auth from '$lib/components/ui/auth';
-	import { site } from '$lib/site';
-	import SocialIcon, { type SocialNetwork } from '$lib/components/icons/SocialIcon.svelte';
-	import Logo from '$lib/components/Logo.svelte';
-	import ScrollProgressBar from '$lib/components/ScrollProgressBar.svelte';
-	import CookieConsent from '$lib/components/CookieConsent.svelte';
+	import { MetaProvider } from '#lib/components/ui/seo/index.js';
+	import * as Auth from '#lib/components/ui/auth/index.js';
+	import { site } from '#lib/site.js';
+	import SocialIcon, { type SocialNetwork } from '#lib/components/icons/SocialIcon.svelte';
+	import Logo from '#lib/components/Logo.svelte';
+	import ScrollProgressBar from '#lib/components/ScrollProgressBar.svelte';
+	import CookieConsent from '#lib/components/CookieConsent.svelte';
 	import ShoppingBag from '@lucide/svelte/icons/shopping-bag';
 	import Search from '@lucide/svelte/icons/search';
 	import Menu from '@lucide/svelte/icons/menu';
@@ -32,14 +34,14 @@
 
 	// Header badge: read without awaiting so the header never blocks rendering (or fails) if Medusa
 	// is unreachable. `addToCart` and the other cart commands update this same query in place.
-	const cartQuery = getCart();
-	const cartCount = $derived(cartQuery.current?.items?.reduce((n, item) => n + item.quantity, 0) ?? 0);
+	const cartQuery = building ? null : getCart();
+	const cartCount = $derived(cartQuery?.current?.items?.reduce((n, item) => n + item.quantity, 0) ?? 0);
 
 	// Menu + footer "Shop" links come from the categories managed in the Medusa admin (top level
 	// only, in the admin's rank order). Also read without awaiting, for the same reason as the cart.
-	const categoriesQuery = getProductCategoriesQuery({ limit: 50, fields: 'id,name,handle,rank,parent_category_id' });
+	const categoriesQuery = building ? null : getProductCategoriesQuery({ limit: 50, fields: 'id,name,handle,rank,parent_category_id' });
 	const shopCategories = $derived(
-		(categoriesQuery.current?.product_categories ?? [])
+		(categoriesQuery?.current?.product_categories ?? [])
 			.filter((c) => !c.parent_category_id)
 			.slice()
 			.sort((a, b) => (a.rank ?? 0) - (b.rank ?? 0))
@@ -73,6 +75,7 @@
 	// and `data-sveltekit-reload` below reloads the page so everything is fetched in that language.
 	const currentLocale = $derived(getLocale());
 	function switchHref(code: Locale) {
+		if (building) return localizePath(pathOf(page.url.pathname), code);
 		const query = new URLSearchParams(page.url.search);
 		query.set('lang', code);
 		return `${localizePath(pathOf(page.url.pathname), code)}?${query}${page.url.hash}`;
@@ -278,7 +281,7 @@
 							{#each shopCategories as cat (cat.id)}
 								<li>
 									<a
-										href={l(`/shop?category=${cat.handle}`)}
+										href={l(`/category/${cat.handle}`)}
 										class="text-lg hover:opacity-70 transition-opacity"
 										onclick={() => (menuOpen = false)}
 									>
@@ -329,18 +332,27 @@
 							</li>
 							<li>
 								<a
-									href={l('/customer-care')}
+									href={l('/customer-care/shipping')}
 									class="text-lg hover:opacity-70 transition-opacity"
 									onclick={() => (menuOpen = false)}
 								>
-									{t('Shipping & Returns')}
+									{t('Shipping')}
+								</a>
+							</li>
+							<li>
+								<a
+									href={l('/customer-care/returns')}
+									class="text-lg hover:opacity-70 transition-opacity"
+									onclick={() => (menuOpen = false)}
+								>
+									{t('Returns')}
 								</a>
 							</li>
 							<li>
 								<a href={l(contactHref)} class="text-lg hover:opacity-70 transition-opacity" onclick={() => (menuOpen = false)}>{t('Contact Us')}</a>
 							</li>
 							<li>
-								<a href={l('/account#orders')} class="text-lg hover:opacity-70 transition-opacity" onclick={() => (menuOpen = false)}>{t('Track Order')}</a>
+								<a href={l('/order-track')} class="text-lg hover:opacity-70 transition-opacity" onclick={() => (menuOpen = false)}>{t('Track Order')}</a>
 							</li>
 						</ul>
 					</div>
@@ -418,7 +430,7 @@
 						<li><a href={l('/shop')} class="hover:text-gray-900 transition-colors">{t('All Swimwear')}</a></li>
 						{#each shopCategories as cat (cat.id)}
 							<li>
-								<a href={l(`/shop?category=${cat.handle}`)} class="hover:text-gray-900 transition-colors">
+								<a href={l(`/category/${cat.handle}`)} class="hover:text-gray-900 transition-colors">
 									{cat.name}
 								</a>
 							</li>
@@ -496,5 +508,7 @@
 </div>
 
 <!-- Opens on ?auth=login|register|forgot|reset. Mount once, here. -->
-<Auth.Dialog />
+{#if !building}
+	<Auth.Dialog />
+{/if}
 </MetaProvider>

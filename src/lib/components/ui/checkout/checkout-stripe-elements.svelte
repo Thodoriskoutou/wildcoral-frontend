@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
+	import { t } from '#lib/i18n/index.js';
 	import type { Snippet } from 'svelte'
 	import { Elements } from 'sveltekit-stripe'
-	import { initiatePaymentSession } from 'sveltekit-medusa-sdk'
+import { initiatePaymentSession } from 'sveltekit-medusa-sdk/payment'
 	import { getStripeClientSecret } from './checkout-logic.js'
 	import { buildStripeAppearance, resolveInputSurface } from './stripe-appearance.js'
 	import { setStripeSessionContext } from './stripe-cs-context.js'

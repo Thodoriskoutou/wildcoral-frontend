@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { t } from '$lib/i18n'
+	import { t } from '#lib/i18n/index.js'
 	// Deletes the signed-in customer's own review, then refreshes `Customer.Reviews`' list.
 	// Reads the per-item review from context set by `<Reviews.List>`/`<Review>` (`review/review-item.svelte`).
 	// `deleteReview` is product-scoped (requires `productId` + `reviewId`) — see reviews.remote.ts.
-	import { Button } from '$lib/components/ui/button/index.js'
-	import { cn } from '$lib/utils.js'
+	import { Button } from '#lib/components/ui/button/index.js'
+	import { cn } from '#lib/utils.js'
 	import { deleteReview, getMyReviews } from 'sveltekit-medusa-sdk/reviews'
 	import { getReviewsContext } from '../reviews/reviews-ctx.svelte.js'
 	import { getReviewItemContextOptional } from '../review/reviews-item-ctx.svelte.js'

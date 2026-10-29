@@ -1,10 +1,8 @@
 <script lang="ts">
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	import { page } from '$app/state'
-	// Import from the /collections subpath: svelte-check cannot resolve the remotes through the
-	// package barrel (the SDK's ./* export maps this straight to collections.remote).
-	import { getCollectionsQuery } from 'sveltekit-medusa-sdk/collections'
-	import { logic as pageNavLogic } from '$lib/components/ui/page-nav/index.js'
+	import { getCollectionsQuery } from '#lib/medusa/catalog.remote.js'
+	import { logic as pageNavLogic } from '#lib/components/ui/page-nav/index.js'
 	import { setCollectionsContext } from './collections-ctx.svelte.js'
 	import type { CollectionsQuery } from './collections-types.js'
 	import type { StoreCollection } from '@medusajs/types'

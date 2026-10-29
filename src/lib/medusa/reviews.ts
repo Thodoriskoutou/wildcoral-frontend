@@ -1,4 +1,4 @@
-import { t } from '$lib/i18n'
+import { t } from '#lib/i18n/index.js'
 /**
  * Product reviews, as the site draws them. Pure helpers (no Medusa calls, no SvelteKit imports) that
  * turn the responses of the `@lambdacurry/medusa-product-reviews` plugin into plain objects.

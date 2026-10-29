@@ -1,7 +1,7 @@
-import type { RemoteForm } from '@sveltejs/kit'
-import type { StoreCart, StoreRegion } from '@medusajs/types'
-import type { ProvinceConfig } from '../input-province/provinces'
-import type { NormalizedAddress } from '../google-places-autocomplete/types'
+import type { RemoteForm } from '$app/server';
+import type { StoreCart, StoreRegion } from '@medusajs/types';
+import type { ProvinceConfig } from '../input-province/provinces';
+import type { NormalizedAddress } from '../google-places-autocomplete/types';
 
 export type { ProvinceConfig }
 
@@ -29,12 +29,14 @@ export type UpdateCartArgs = {
 // getCart/getRegions are SvelteKit remote queries — awaitable AND exposing `.current` (getRegions'
 // query is also awaited directly for its resolved value). Root bridges the SDK's under-resolved
 // return types to these shapes.
-export type CartQuery = { current: StoreCart | null | undefined }
-export type RegionsResource = Promise<StoreRegion[]> & { current: StoreRegion[] | undefined }
+export type CartQuery = { current: StoreCart | null | undefined };
 
-export type Country = { code: string; name: string }
+export type RegionsResource = 
+	Promise<StoreRegion[]> &
+	{ current: StoreRegion[] | undefined };
 
-export type UpdateAddress = () => Promise<StoreCart | null>
+export type Country = { code: string; name: string };
+export type UpdateAddress = () => Promise<StoreCart | null>;
 
 export type AddressContext = {
 	readonly form: RemoteForm<any, any>

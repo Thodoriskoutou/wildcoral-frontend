@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	let { fill = 0, class: className = '' }: { fill?: number; class?: string } = $props()
 	const uid = $props.id()
 	const gradId = `star-${uid}`

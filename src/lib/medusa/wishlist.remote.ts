@@ -1,6 +1,6 @@
 import { command, query } from '$app/server';
 import * as v from 'valibot';
-import { getCustomer } from 'sveltekit-medusa-sdk';
+import { getCustomer } from 'sveltekit-medusa-sdk/customer';
 import { getMedusaContext } from 'sveltekit-medusa-sdk/server';
 import { storeFetch } from './store-fetch.server';
 

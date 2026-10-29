@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
+	import { t } from '#lib/i18n/index.js';
 	// The five-step progress line on an order: placed → paid → prepared → shipped → delivered.
 	// A row on wide screens, a column on phones.
 	import Check from '@lucide/svelte/icons/check';
-	import type { OrderStep } from '$lib/medusa/order-tracking';
+	import type { OrderStep } from '#lib/medusa/order-tracking.js';
 
 	let { steps }: { steps: OrderStep[] } = $props();
 </script>

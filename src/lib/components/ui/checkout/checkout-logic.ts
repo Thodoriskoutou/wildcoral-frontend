@@ -1,4 +1,4 @@
-import { t } from '$lib/i18n'
+import { t } from '#lib/i18n/index.js'
 import type { StoreOrder, StoreCart } from '@medusajs/types'
 import type { UpdateAddress, AuthorizePayment } from './types'
 

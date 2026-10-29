@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { t, l } from '$lib/i18n';
+	import { t, l } from '#lib/i18n/index.js';
 	// Collection listing — the mirror of /category/[slug].
 	import { page } from '$app/state'
-	import { getCollectionQuery } from 'sveltekit-medusa-sdk'
-	import * as Products from '$lib/components/ui/products'
-	import { Metadata } from '$lib/components/ui/seo'
+	import { getCollectionQuery } from '#lib/medusa/catalog.remote.js'
+	import * as Products from '#lib/components/ui/products/index.js'
+	import { Metadata } from '#lib/components/ui/seo/index.js'
 
 	// The Query variant (not the cached prerender one): the collection's title depends on the visitor's language
 	const collection = $derived(await getCollectionQuery({ slug: page.params.slug }))

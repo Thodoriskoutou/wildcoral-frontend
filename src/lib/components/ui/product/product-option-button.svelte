@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { l } from '$lib/i18n';
-	import { cn } from '$lib/utils.js'
+	import { l } from '#lib/i18n/index.js';
+	import { cn } from '#lib/utils.js'
 	import { getProductContext } from './ctx.svelte.js'
 	import type { StoreProductOption } from '@medusajs/types'
 

@@ -1,0 +1,49 @@
+
+# Dependencies
+node_modules/
+.bun/
+
+# SvelteKit build artifacts
+.svelte-kit/
+build/
+dist/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Git
+.git/
+.gitignore
+
+# IDE / editor files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and test coverage
+*.log
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+
+# Docker configuration
+Dockerfile
+Dockerfile.*
+docker-compose*.yml
+compose*.yaml
+
+# Documentation
+README.md
+docs/
+
+
+.waylog
+.impeccable

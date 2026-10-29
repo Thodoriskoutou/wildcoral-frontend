@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils.js'
+	import { cn } from '#lib/utils.js'
 	import { getCartContext } from './ctx.svelte.js'
 	import Item from './cart-item.svelte'
 	import Empty from './cart-empty.svelte'

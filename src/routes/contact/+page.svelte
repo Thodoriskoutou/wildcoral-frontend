@@ -1,29 +1,24 @@
 <script lang="ts">
-	import { t, l, localized } from '$lib/i18n';
-	// Contact: how to reach the shop. Contact details come from src/lib/site.ts; the message form is shown
-	// only when messages can really be delivered (an email service is set up, see src/env.ts), so a visitor
-	// never writes a message that goes nowhere.
+	import { t, l, localized } from '#lib/i18n/index.js';
+	// Contact: Medusa validates and delivers this form through its configured SMTP Notification Module.
 	import Mail from '@lucide/svelte/icons/mail';
 	import Phone from '@lucide/svelte/icons/phone';
 	import MapPin from '@lucide/svelte/icons/map-pin';
 	import Clock from '@lucide/svelte/icons/clock';
 	import CircleCheck from '@lucide/svelte/icons/circle-check';
 	import { page } from '$app/state';
-	import { dev } from '$app/env';
-	import { getCustomer } from 'sveltekit-medusa-sdk';
-	import { Metadata } from '$lib/components/ui/seo';
-	import SocialIcon, { type SocialNetwork } from '$lib/components/icons/SocialIcon.svelte';
-	import { site } from '$lib/site';
-	import { TOPICS, isTopic } from '$lib/contact';
-	import { getContactMode, sendContactMessage } from '$lib/contact.remote';
-	import { safe } from '$lib/medusa/safe';
+	import { getCustomer } from 'sveltekit-medusa-sdk/customer';
+	import { Metadata } from '#lib/components/ui/seo/index.js';
+	import SocialIcon, { type SocialNetwork } from '#lib/components/icons/SocialIcon.svelte';
+	import { site } from '#lib/site.js';
+	import { TOPICS, isTopic } from '#lib/contact.js';
+	import { sendContactMessage } from '#lib/contact.remote.js';
+	import { safe } from '#lib/medusa/safe.js';
 
 	const labelClass = 'text-xs tracking-[0.2em] uppercase block mb-2 text-gray-700';
 	const inputClass =
 		'w-full border-2 border-gray-300 px-4 py-3 text-sm outline-none focus:border-gray-900 transition-colors aria-invalid:border-red-600';
 
-	const mode = $derived(await safe(() => getContactMode()));
-	const canSend = $derived(mode.data?.canSend ?? false);
 	// A signed-in customer doesn't have to type their name and email again.
 	const customer = $derived((await safe(() => getCustomer())).data ?? null);
 
@@ -32,7 +27,6 @@
 	let failure = $state('');
 
 	const FAILURES = {
-		not_configured: t('Messages can’t be sent right now. Please email us directly instead.'),
 		rate_limited: t('You’ve sent a few messages already. Please wait a few minutes and try again.'),
 		send_failed: t('Your message couldn’t be sent. Please try again, or email us directly.'),
 		network: t('Could not reach the server. Please check your connection and try again.')
@@ -111,7 +105,7 @@
 							{t('Send another message')}
 						</button>
 					</div>
-				{:else if canSend}
+				{:else}
 					<form {...enhanced} class="space-y-6">
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 							<div>
@@ -178,26 +172,6 @@
 							{sendContactMessage.pending > 0 ? t('Sending…') : t('Send message')}
 						</button>
 					</form>
-				{:else if site.contactEmail}
-					<p class="text-base text-gray-700 leading-relaxed mb-8">
-						{t('The quickest way to reach us is by email.')}
-					</p>
-					<a
-						href="mailto:{site.contactEmail}"
-						class="inline-flex items-center gap-3 border-2 border-gray-900 px-8 py-4 text-sm tracking-[0.2em] uppercase transition-all hover:bg-gray-900 hover:text-white"
-					>
-						<Mail class="size-4" /> {t('Email us')}
-					</a>
-				{:else}
-					<p class="text-base text-gray-700 leading-relaxed">
-						{t('Our contact details are coming soon. In the meantime, the Customer Care pages answer most questions about sizing, shipping and returns.')}
-					</p>
-					{#if dev}
-						<p class="mt-6 border-2 border-dashed border-gray-300 p-4 text-xs leading-relaxed text-gray-600">
-							<strong class="font-medium text-gray-900">{t('Developer note:')}</strong> {t('set')} <code>contactEmail</code> {t('in')}
-							<code>src/lib/site.ts</code>{t(', and')} <code>RESEND_API_KEY</code> {t('in')} <code>.env</code> {t('to enable this form.')}
-						</p>
-					{/if}
 				{/if}
 			</section>
 
@@ -239,7 +213,7 @@
 					<h3 class="text-xs tracking-[0.3em] uppercase text-gray-500 mb-5">{t('Quick answers')}</h3>
 					<ul class="space-y-3 text-sm">
 						<li><a href={l('/customer-care')} class="underline hover:opacity-70 transition-opacity">{t('Size guide, shipping and returns')}</a></li>
-						<li><a href={l('/account#orders')} class="underline hover:opacity-70 transition-opacity">{t('Track an order')}</a></li>
+						<li><a href={l('/order-track')} class="underline hover:opacity-70 transition-opacity">{t('Track an order')}</a></li>
 					</ul>
 				</div>
 

@@ -1,24 +1,26 @@
 <script lang="ts">
-	import { t, l } from '$lib/i18n';
+	import { t, l } from '#lib/i18n/index.js';
 	// Account: the Wild Coral account pages, on the customer's real Medusa data.
 	//
 	// Signed out → the split sign-in / register screen (the registry's auth forms, styled to the
 	// design). Signed in → welcome, orders (each opens its tracking page), profile and saved
 	// addresses. The customer is read with `getCustomer()`; the auth forms refresh that query on
 	// success, so the page swaps views on its own.
-	import { getCustomer, updateCustomer, getAddresses, deleteAddress, getProductQuery } from 'sveltekit-medusa-sdk';
-	import * as Auth from '$lib/components/ui/auth';
+	import { getCustomer, updateCustomer } from 'sveltekit-medusa-sdk/customer';
+	import { getAddresses, deleteAddress } from 'sveltekit-medusa-sdk/address';
+	import { getProductQuery } from '#lib/medusa/catalog.remote.js';
+	import * as Auth from '#lib/components/ui/auth/index.js';
 	import { logout } from 'sveltekit-medusa-sdk/auth';
-	import { Metadata } from '$lib/components/ui/seo';
-	import { getMyOrders } from '$lib/medusa/tracking.remote';
-	import { getSavedProductIds } from '$lib/medusa/wishlist.remote';
-	import { wishlist } from '$lib/medusa/wishlist-state.svelte';
-	import { toCatalogProduct, formatPrice, PRODUCT_FIELDS } from '$lib/medusa/catalog';
-	import ProductMedia from '$lib/components/ProductMedia.svelte';
-	import { safe } from '$lib/medusa/safe';
-	import { photos } from '$lib/site';
+	import { Metadata } from '#lib/components/ui/seo/index.js';
+	import { getMyOrders } from '#lib/medusa/tracking.remote.js';
+	import { getSavedProductIds } from '#lib/medusa/wishlist.remote.js';
+	import { wishlist } from '#lib/medusa/wishlist-state.svelte.js';
+	import { toCatalogProduct, formatPrice, PRODUCT_FIELDS } from '#lib/medusa/catalog.js';
+	import ProductMedia from '#lib/components/ProductMedia.svelte';
+	import { safe } from '#lib/medusa/safe.js';
+	import { photos } from '#lib/site.js';
 	import { dev } from '$app/env';
-	import OrderCard from '$lib/components/account/OrderCard.svelte';
+	import OrderCard from '#lib/components/account/OrderCard.svelte';
 
 	// Wireframe styling for the registry's form parts.
 	const labelClass = 'text-xs tracking-[0.2em] uppercase block mb-2 text-gray-700';
